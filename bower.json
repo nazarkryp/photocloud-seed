@@ -1,0 +1,25 @@
+{
+  "name": "photocloud",
+  "description": "Client for Cloud-Based Photo-Sharing service",
+  "main": "index.js",
+  "authors": [
+    "nazarkryp"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.6.4",
+    "angular-ui-router": "^0.4.2",
+    "angular-material": "^1.1.3",
+    "angular-sanitize": "^1.6.4",
+    "ng-file-upload": "^12.2.13",
+    "angular-cookies": "^1.6.4"
+  }
+}
