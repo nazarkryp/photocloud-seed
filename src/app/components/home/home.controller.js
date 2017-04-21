@@ -8,7 +8,7 @@
         var vm = this;
 
         vm.$onInit = function() {
-
+            console.log('home');
         }
     }
 })();

@@ -4,9 +4,9 @@
     angular.module('photocloud')
         .factory('httpInterceptor', httpInterceptor);
 
-    httpInterceptor.$inject = ['$q', '$state', 'session'];
+    httpInterceptor.$inject = ['$q', 'session'];
 
-    function httpInterceptor($q, $state, session) {
+    function httpInterceptor($q, session) {
         return {
             'request': function(config) {
                 var sessionInfo = session.getSession();

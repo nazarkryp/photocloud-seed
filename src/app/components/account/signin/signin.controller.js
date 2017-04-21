@@ -10,7 +10,7 @@
         var vm = this;
 
         vm.$onInit = function() {
-
+            console.log('signin');
         }
     }
 })();
