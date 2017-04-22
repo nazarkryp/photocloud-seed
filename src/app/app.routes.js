@@ -8,10 +8,16 @@
 
     function configRoutes($stateProvider, $urlRouterProvider, $httpProvider) {
         $stateProvider
-            .state('home', {
+            .state('posts', {
                 url: '/',
-                templateUrl: 'app/components/home/home.template.html',
+                templateUrl: 'app/components/posts/posts.template.html',
                 controller: 'HomeController',
+                controllerAs: 'vm'
+            })
+            .state('about', {
+                url: '/about',
+                templateUrl: 'app/components/about/about.template.html',
+                controller: 'AboutController',
                 controllerAs: 'vm'
             })
             .state('signin', {
@@ -25,13 +31,7 @@
                 templateUrl: 'app/components/account/create/create-account.template.html',
                 controller: 'CreateAccountController',
                 controllerAs: 'vm'
-            })
-            .state('about', {
-                url: '/about',
-                templateUrl: 'app/components/about/about.template.html',
-                controller: 'AboutController',
-                controllerAs: 'vm'
-            })
+            });
 
         $urlRouterProvider.otherwise('/');
         $httpProvider.interceptors.push('httpInterceptor');

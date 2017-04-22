@@ -2,9 +2,9 @@
     'use strict';
 
     angular.module('photocloud')
-        .controller('HomeController', HomeController);
+        .controller('PostsController', PostsController);
 
-    function HomeController() {
+    function PostsController() {
         var vm = this;
 
         vm.$onInit = function() {

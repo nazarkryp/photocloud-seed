@@ -1,12 +1,26 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
+/*@import url('https://fonts.googleapis.com/css?family=Roboto:300,400');*/
+
 body {
     font-family: 'Roboto', sans-serif;
+    font-weight: lighter;
+    color: #454545;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5 {
-    font-weight: lighter;
+md-toolbar.md-default-theme:not(.md-menu-toolbar),
+md-toolbar:not(.md-menu-toolbar) {
+    background-color: white;
+    color: #454545;
+    border-bottom: 1px solid #efefef;
+}
+
+.container {
+    width: 75%;
+}
+
+.col-x1 {
+    width: 25%;
+}
+
+.col-x2 {
+    width: 50%;
 }
