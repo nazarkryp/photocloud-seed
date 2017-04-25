@@ -1,0 +1,28 @@
+{
+    "globals": {
+        "expect": true,
+        "angular": true
+    },
+    "root": true,
+    "env": {
+        "browser": true
+    },
+    "extends": [
+        "xo-space"
+    ],
+    "rules": {
+        "indent": [
+            "error",
+            4
+        ],
+        "linebreak-style": [
+            "error",
+            "windows"
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "no-unused-vars": "warn"
+    }
+}

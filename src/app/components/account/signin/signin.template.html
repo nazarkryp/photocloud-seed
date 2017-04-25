@@ -1,3 +1,25 @@
-<div>
-    Sign In
+<div class="content" layout="column" layout-align="center center">
+    <h1>PhotoCloud</h1>
+    <div class="input-form">
+        <md-input-container class="md-block" md-no-float flex>
+            <input type="text" placeholder="Username" ng-model="vm.account.username" aria-label="account">
+        </md-input-container>
+        <md-input-container class="md-block" md-no-float flex>
+            <input type="text" placeholder="Username" ng-model="vm.account.username" aria-label="account">
+        </md-input-container>
+        <md-checkbox ng-model="vm.account.remember">Remember me?</md-checkbox>
+        <div layout="column" layout-align="center center">
+            <md-progress-circular class="md-primary" md-diameter="35px" ng-if="vm.isLoading"></md-progress-circular>
+            <md-button class="md-raised md-primary" type="submit" ng-disabled="vm.isLoading" ng-if="!vm.isLoading">
+                {{ vm.isLoading ? 'Loading' : 'Sign In' }}
+            </md-button>
+            <div class="error" ng-if="vm.error">
+                <span>{{vm.error}}</span>
+            </div>
+            <md-divider flex="50"></md-divider>
+            <div>
+                <span>No account?</span><a ui-sref="signup">Sign up for free</a>
+            </div>
+        </div>
+    </div>
 </div>

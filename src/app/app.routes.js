@@ -1,12 +1,15 @@
-(function() {
+(function () {
     'use strict';
 
     angular.module('photocloud')
         .config(configRoutes);
 
-    configRoutes.$inject = ['$stateProvider', '$urlRouterProvider', '$httpProvider'];
+    configRoutes.$inject = ['$stateProvider', '$urlRouterProvider', '$httpProvider', '$mdThemingProvider'];
 
-    function configRoutes($stateProvider, $urlRouterProvider, $httpProvider) {
+    function configRoutes($stateProvider, $urlRouterProvider, $httpProvider, $mdThemingProvider) {
+        $mdThemingProvider.theme('default')
+            .primaryPalette('blue');
+
         $stateProvider
             .state('posts', {
                 url: '/',

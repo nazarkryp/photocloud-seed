@@ -1,16 +1,24 @@
-/*@import url('https://fonts.googleapis.com/css?family=Roboto:300,400');*/
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
 
 body {
     font-family: 'Roboto', sans-serif;
     font-weight: lighter;
-    color: #454545;
+    color: #262626;
 }
 
 md-toolbar.md-default-theme:not(.md-menu-toolbar),
 md-toolbar:not(.md-menu-toolbar) {
     background-color: white;
-    color: #454545;
+    color: #262626;
     border-bottom: 1px solid #efefef;
+}
+
+h1 {
+    font-weight: lighter;
+}
+
+.content {
+    width: 100%;
 }
 
 .container {
@@ -23,4 +31,12 @@ md-toolbar:not(.md-menu-toolbar) {
 
 .col-x2 {
     width: 50%;
+}
+
+.input-form {
+    width: 450px;
+}
+
+a {
+    text-decoration: none;
 }
