@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
+html {
+    overflow-y: scroll;
+}
 
 body {
     font-family: 'Roboto', sans-serif;
@@ -11,6 +14,11 @@ md-toolbar:not(.md-menu-toolbar) {
     background-color: white;
     color: #262626;
     border-bottom: 1px solid #efefef;
+}
+
+.md-block {
+    display: block;
+    width: 100%;
 }
 
 h1 {
@@ -39,6 +47,10 @@ h1 {
 
 a {
     text-decoration: none;
+}
+
+a:visited {
+    color: rgb(33, 150, 243);
 }
 
 .md-padding.left {

@@ -14,7 +14,7 @@
             .state('posts', {
                 url: '/',
                 templateUrl: 'app/components/posts/posts.template.html',
-                controller: 'HomeController',
+                controller: 'PostsController',
                 controllerAs: 'vm'
             })
             .state('about', {

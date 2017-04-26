@@ -10,15 +10,17 @@
         <md-checkbox ng-model="vm.account.remember">Remember me?</md-checkbox>
         <div layout="column" layout-align="center center">
             <md-progress-circular class="md-primary" md-diameter="35px" ng-if="vm.isLoading"></md-progress-circular>
-            <md-button class="md-raised md-primary" type="submit" ng-disabled="vm.isLoading" ng-if="!vm.isLoading">
+            <md-button class="md-raised md-primary md-block" type="submit" ng-disabled="vm.isLoading" ng-if="!vm.isLoading">
                 {{ vm.isLoading ? 'Loading' : 'Sign In' }}
             </md-button>
             <div class="error" ng-if="vm.error">
                 <span>{{vm.error}}</span>
             </div>
-            <md-divider flex="50"></md-divider>
+            <div class="md-block md-padding top">
+                <md-divider class="md-block md-padding top"></md-divider>
+            </div>
             <div>
-                <span>No account?</span><a ui-sref="signup">Sign up for free</a>
+                <span class="md-padding right">No account?</span><a ui-sref="signup">Sign up for free</a>
             </div>
         </div>
     </div>
