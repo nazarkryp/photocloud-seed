@@ -40,3 +40,31 @@ h1 {
 a {
     text-decoration: none;
 }
+
+.md-padding.left {
+    padding: 0px 0px 0px 16px;
+}
+
+.md-padding.right {
+    padding: 0px 16px 0px 0px;
+}
+
+.md-padding.top {
+    padding: 16px 0px 0px 0px;
+}
+
+.md-padding.bottom {
+    padding: 0px 0px 16px 0px;
+}
+
+.md-padding-wide {
+    padding: 0px 16px 0px 16px;
+}
+
+.thumbnail-small {
+    height: 40px;
+    width: 40px;
+    border-radius: 90px 90px 90px 90px;
+    object-fit: cover;
+    overflow: hidden;
+}

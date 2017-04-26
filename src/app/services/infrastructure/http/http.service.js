@@ -11,7 +11,7 @@
             $http.get(httpConfiguration.baseUri + url)
                 .then(
                     function onSuccess(response) {
-                        deferred.resolve(response);
+                        deferred.resolve(response.data);
                     },
                     function onError(error) {
                         deferred.reject(error);
