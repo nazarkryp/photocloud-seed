@@ -15,10 +15,50 @@
             return deferred.promise;
         };
 
-        this.getUserPosts = function () {
+        this.getPostById = function (postId) {
             var deferred = $q.defer();
 
-            httpService.get('posts/users/', deferred);
+            httpService.get('posts/' + postId, deferred);
+
+            return deferred.promise;
+        };
+
+        this.getPostByTag = function (tag) {
+            var deferred = $q.defer();
+
+            httpService.get('posts/tags/' + tag, deferred);
+
+            return deferred.promise;
+        };
+
+        this.getUserPosts = function (username) {
+            var deferred = $q.defer();
+
+            httpService.get('posts/users/' + username, deferred);
+
+            return deferred.promise;
+        };
+
+        this.createPost = function (post) {
+            var deferred = $q.defer();
+
+            httpService.post('posts/create', post, deferred);
+
+            return deferred.promise;
+        };
+
+        this.removePost = function (postId) {
+            var deferred = $q.defer();
+
+            httpService.delete('posts/remove/' + postId, deferred);
+
+            return deferred.promise;
+        };
+
+        this.likePost = function (postId) {
+            var deferred = $q.defer();
+
+            httpService.delete('posts/like/' + postId, deferred);
 
             return deferred.promise;
         };
