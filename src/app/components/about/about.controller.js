@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular.module('photocloud')
@@ -7,8 +7,8 @@
     function AboutController() {
         var vm = this;
 
-        vm.$onInit = function() {
-
-        }
+        vm.$onInit = function () {
+            console.log('about');
+        };
     }
 })();

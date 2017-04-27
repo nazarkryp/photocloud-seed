@@ -1,5 +1,13 @@
-(function() {
+(function () {
     'use strict';
 
-    angular.module('photocloud', ['ngMaterial', 'ui.router', 'ngMaterial', 'ngMessages', 'ngSanitize', 'ngFileUpload', 'ngCookies']);
+    angular.module('photocloud', [
+        'app.core',
+        'app.router',
+        'ngMaterial',
+        'ngMessages',
+        'ngSanitize',
+        'ngFileUpload',
+        'ngCookies'
+    ]);
 })();
