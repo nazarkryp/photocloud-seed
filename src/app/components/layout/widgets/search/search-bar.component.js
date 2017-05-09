@@ -1,10 +1,10 @@
-(function() {
+(function () {
     'use strict';
 
     angular.module('photocloud')
-        .component('search', {
+        .component('searchBar', {
             controller: 'SearchBarController',
             controllerAs: 'vm',
-            templateUrl: 'app/components/widgets/search/search.template.html'
+            templateUrl: 'app/components/layout/widgets/search/search.template.html'
         });
 })();

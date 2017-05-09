@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular.module('photocloud')
@@ -7,7 +7,7 @@
     searchBarService.$inject = ['$q', 'httpService'];
 
     function searchBarService($q, httpService) {
-        this.search = function(query) {
+        this.search = function (query) {
             var deferred = $q.defer();
 
             httpService.get('users/search?query=' + query, deferred);

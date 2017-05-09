@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular.module('photocloud')
@@ -13,7 +13,7 @@
         vm.selectedItem = null;
         vm.query = null;
 
-        vm.search = function(searchQuery) {
+        vm.search = function (searchQuery) {
             if (searchQuery) {
                 return searchBarService.search(searchQuery);
             }
@@ -24,9 +24,11 @@
             return deferred.promise;
         }
 
-        vm.selectedItemChange = function(selectedItem) {
+        vm.selectedItemChange = function (selectedItem) {
             if (selectedItem) {
-                $state.go('userfeed', { username: selectedItem.username });
+                $state.go('userfeed', {
+                    username: selectedItem.username
+                });
                 selectedItem = null;
             }
         }
