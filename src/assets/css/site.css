@@ -9,11 +9,26 @@ body {
     color: #262626;
 }
 
+main {
+    min-height: calc(100vh - 145px);
+}
+
+li {
+    display: inline;
+    margin-left: 15px;
+}
+
 md-toolbar.md-default-theme:not(.md-menu-toolbar),
 md-toolbar:not(.md-menu-toolbar) {
     background-color: white;
     color: #262626;
     border-bottom: 1px solid #efefef;
+}
+
+.md-toolbar-tools h1,
+.md-toolbar-tools h2,
+.md-toolbar-tools h3 {
+    font-weight: lighter;
 }
 
 .md-block {
@@ -25,7 +40,13 @@ h1 {
     font-weight: lighter;
 }
 
+h1.title {
+    font-weight: lighter;
+    font-size: 24px;
+}
+
 .content {
+    min-height: calc(100vh - 145px);
     width: 100%;
 }
 
@@ -41,9 +62,15 @@ h1 {
     width: 50%;
 }
 
-.input-form {
+.box {
     width: 450px;
 }
+
+.box-content {
+    padding: 24px;
+}
+
+.box-footer {}
 
 a {
     text-decoration: none;
@@ -79,4 +106,8 @@ a:visited {
     border-radius: 90px 90px 90px 90px;
     object-fit: cover;
     overflow: hidden;
+}
+
+.description {
+    color: #808080;
 }

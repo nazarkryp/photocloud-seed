@@ -22,7 +22,6 @@
         };
 
         return service;
-        /////////////////////
 
         function error(message, data, title) {
             show(message);

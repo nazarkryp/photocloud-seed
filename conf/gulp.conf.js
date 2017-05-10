@@ -26,6 +26,7 @@ exports.paths = {
 /**
  * used on gulp dist
  */
+
 exports.htmlmin = {
     ignoreCustomFragments: [/{{.*?}}/]
 };
@@ -33,7 +34,7 @@ exports.htmlmin = {
 exports.path = {};
 for (const pathName in exports.paths) {
     if (Object.prototype.hasOwnProperty.call(exports.paths, pathName)) {
-        exports.path[pathName] = function() {
+        exports.path[pathName] = function () {
             const pathValue = exports.paths[pathName];
             const funcArgs = Array.prototype.slice.call(arguments);
             const joinArgs = [pathValue].concat(funcArgs);
@@ -45,8 +46,8 @@ for (const pathName in exports.paths) {
 /**
  *  Common implementation for an error handler of a Gulp plugin
  */
-exports.errorHandler = function(title) {
-    return function(err) {
+exports.errorHandler = function (title) {
+    return function (err) {
         gutil.log(gutil.colors.red(`[${title}]`), err.toString());
         this.emit('end');
     };
