@@ -4,22 +4,31 @@
     angular.module('photocloud')
         .controller('SignInController', SignInController);
 
-    SignInController.$inject = ['accountService', 'session'];
+    SignInController.$inject = ['accountService', 'session', 'logger'];
 
-    function SignInController(accountService, session) {
+    function SignInController(accountService, session, logger) {
         var vm = this;
 
         vm.isLoading = false;
+        vm.error = false;
 
         vm.signIn = function (account) {
             accountService.signIn(account)
-                .then(function (response) {
-                    vm.isLoading = false;
-
-                    session.set(response);
-                }, function (error) {
-                    vm.isLoading = false;
-                });
+                .then(onSuccess, onError);
         };
+
+        function onSuccess(response) {
+            vm.isLoading = false;
+            session.save(response);
+
+            var message = 'Logged in as ' + response.userName;
+
+            logger.toast(message);
+        }
+
+        function onError(error) {
+            vm.isLoading = false;
+            logger.toast(error);
+        }
     }
 })();

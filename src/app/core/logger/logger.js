@@ -17,7 +17,7 @@
             info: info,
             success: success,
             warning: warning,
-
+            toast: show,
             log: $log.log
         };
 
@@ -30,7 +30,7 @@
 
         function info(message, data, title) {
             show(message);
-            $log.info('Info: ' + message, data);
+            $log.info('info: ' + message, data);
         }
 
         function success(message, data, title) {

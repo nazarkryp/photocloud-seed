@@ -10,7 +10,7 @@ body {
 }
 
 main {
-    min-height: calc(100vh - 145px);
+    /*min-height: calc(100vh - 70px - 70px);*/
 }
 
 li {
@@ -20,9 +20,48 @@ li {
 
 md-toolbar.md-default-theme:not(.md-menu-toolbar),
 md-toolbar:not(.md-menu-toolbar) {
+    height: 70px;
     background-color: white;
     color: #262626;
     border-bottom: 1px solid #efefef;
+}
+
+md-progress-linear {
+    height: 3px;
+}
+
+.md-progress-linear.md-default-theme .md-container,
+md-progress-linear .md-container {
+    background-color: transparent;
+    height: 3px;
+}
+
+.md-progress-linear.md-default-theme .md-bar,
+md-progress-linear .md-bar {
+    /*background-color: red;*/
+    height: 3px;
+}
+
+md-progress-linear .md-container .md-bar {
+    height: 3px;
+}
+
+md-progress-circular.md-primary path {
+    stroke: #2196f3;
+}
+
+md-progress-circular.md-white path {
+    stroke: white;
+}
+
+md-progress-circular.md-black path {
+    stroke: black;
+}
+
+.footer {
+    height: 70px;
+    background-color: white;
+    border-top: 1px solid #efefef;
 }
 
 .md-toolbar-tools h1,
@@ -45,9 +84,14 @@ h1.title {
     font-size: 24px;
 }
 
+h2 {
+    font-weight: lighter;
+}
+
 .content {
-    min-height: calc(100vh - 145px);
+    min-height: calc(100vh - 70px - 70px);
     width: 100%;
+    padding-top: 25px;
 }
 
 .container {
@@ -63,11 +107,13 @@ h1.title {
 }
 
 .box {
-    width: 450px;
+    width: 400px;
+    background-color: white;
 }
 
+.box-header {}
+
 .box-content {
-    padding: 24px;
 }
 
 .box-footer {}
@@ -110,4 +156,9 @@ a:visited {
 
 .description {
     color: #808080;
+}
+
+.error {
+    color: #ed4956;
+    text-align: center;
 }

@@ -10,7 +10,7 @@
         this.create = function (account) {
             var deferred = $q.defer();
 
-            httpService.post('account/create', account);
+            httpService.post('account/create', account, deferred);
 
             return deferred.promise;
         };
@@ -18,7 +18,7 @@
         this.getAccount = function () {
             var deferred = $q.defer();
 
-            httpService.get('account');
+            httpService.get('account', deferred);
 
             return deferred.promise;
         };
@@ -26,31 +26,8 @@
         this.signIn = function (account) {
             var deferred = $q.defer();
 
-            httpService.post('authorize', account);
-
-            return deferred.promise;
-        };
-
-        this.changePassword = function (account) {
-            var deferred = $q.defer();
-
-            httpService.post('account/password', account);
-
-            return deferred.promise;
-        };
-
-        this.changeEmail = function (account) {
-            var deferred = $q.defer();
-
-            httpService.post('account/email', account);
-
-            return deferred.promise;
-        };
-
-        this.changeProfile = function (account) {
-            var deferred = $q.defer();
-
-            httpService.post('account/profile', account);
+            var data = 'grant_type=password&username=' + account.username + '&password=' + account.password;
+            httpService.post('authorize', data, deferred);
 
             return deferred.promise;
         };

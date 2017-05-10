@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular.module('photocloud')
@@ -7,16 +7,30 @@
     httpService.$inject = ['$http', 'httpConfiguration'];
 
     function httpService($http, httpConfiguration) {
-        this.get = function(url, deferred) {
+        this.get = function (url, deferred) {
             $http.get(httpConfiguration.baseUri + url)
-                .then(
-                    function onSuccess(response) {
-                        deferred.resolve(response.data);
-                    },
-                    function onError(error) {
-                        deferred.reject(error);
-                    }
-                );
-        }
+                .then(onSuccess, onError);
+
+            function onSuccess(response) {
+                deferred.resolve(response.data);
+            }
+
+            function onError(error) {
+                deferred.reject(error);
+            }
+        };
+
+        this.post = function (url, data, deferred) {
+            $http.post(httpConfiguration.baseUri + url, data)
+                .then(onSuccess, onError);
+
+            function onSuccess(response) {
+                deferred.resolve(response.data);
+            }
+
+            function onError(error) {
+                deferred.reject(error);
+            }
+        };
     }
 })();

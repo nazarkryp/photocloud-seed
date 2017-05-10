@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular.module('photocloud')
@@ -11,22 +11,24 @@
 
         self.key = 'session';
 
-        self.setSession = function(session) {
-            $cookies.put(self.key, session);
-        }
+        self.save = function (session) {
+            var json = angular.toJson(session);
+            $cookies.put(self.key, json);
+        };
 
-        self.getSession = function() {
-            return $cookies.get(self.key);
-        }
+        self.get = function () {
+            var json = $cookies.get(self.key);
+            return angular.fromJson(json);
+        };
 
-        self.cleanSession = function() {
+        self.clear = function () {
             $cookies.remove(self.key);
-        }
+        };
 
         return {
-            setSession: self.setSession,
-            getSession: self.getSession,
-            cleanSession: self.cleanSession
-        }
+            save: self.save,
+            get: self.get,
+            clear: self.clear
+        };
     }
 })();

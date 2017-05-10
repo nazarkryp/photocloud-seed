@@ -20,13 +20,13 @@
     <!-- endbuild -->
 </head>
 
-<body ng-controller="IndexController as vm">
+<body ng-controller="IndexController as vm" ng-cloak>
     <header>
         <md-toolbar class="md-toolbar-white">
             <div class="md-toolbar-tools" layout="row" layout-align="center center">
                 <div class="container" layout="row" layout="row" layout-align="space-between center">
                     <div class="col-x1">
-                        <h1 class="title">PhotoCloud</h1>
+                        <h1 class="title">photocloud</h1>
                     </div>
                     <div class="col-x2" layout="row" layout-align="center center">
                         <!--<search-bar flex></search-bar>-->
@@ -51,6 +51,12 @@
     <main>
         <div ui-view></div>
     </main>
+
+    <footer>
+        <div class="footer" layout="row" layout-align="center center">
+            <span>Copyright &copy; {{ vm.date | date : 'yyyy' }} PhotoCloud</span>
+        </div>
+    </footer>
 
     <!-- build:js({.tmp,src}) scripts/vendor.js -->
     <!-- bower:js -->

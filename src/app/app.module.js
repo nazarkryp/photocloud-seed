@@ -3,6 +3,7 @@
 
     angular.module('photocloud', [
         'app.core',
+        'app.logger',
         'app.router',
         'ngMaterial',
         'ngMessages',
