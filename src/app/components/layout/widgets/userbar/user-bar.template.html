@@ -1,4 +1,8 @@
-<div layout="row" layout-align="center center">
+<div layout="row" layout-align="center center" ng-if="!vm.currentUser.isAuthenticated">
     <md-button>Create Account</md-button>
     <md-button class="md-primary">Sign In</md-button>
+</div>
+<div layout="row" layout-align="center center" ng-if="vm.currentUser.isAuthenticated">
+    <img class="thumbnail-small" ng-src="{{vm.currentUser.pictureUri}}" alt="user">
+    <md-button ng-click="vm.logout()">Logout</md-button>
 </div>

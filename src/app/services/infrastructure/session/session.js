@@ -12,6 +12,9 @@
         self.key = 'session';
 
         self.save = function (session) {
+            session.isActive = session.isActive === 'true';
+            session.isPrivate = session.isPrivate === 'true';
+
             var json = angular.toJson(session);
             $cookies.put(self.key, json);
         };

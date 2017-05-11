@@ -22,7 +22,7 @@
             deferred.resolve([]);
 
             return deferred.promise;
-        }
+        };
 
         vm.selectedItemChange = function (selectedItem) {
             if (selectedItem) {
@@ -31,6 +31,6 @@
                 });
                 selectedItem = null;
             }
-        }
+        };
     }
 })();

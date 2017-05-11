@@ -12,7 +12,7 @@
                 var accessToken = tokenProvider.getAccessToken();
 
                 if (accessToken) {
-                    config.headers.Authorization = 'Bearer ' + accessToken.token;
+                    config.headers.Authorization = 'Bearer ' + accessToken.access_token;
                 }
 
                 return config;

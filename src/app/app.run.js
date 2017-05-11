@@ -4,22 +4,22 @@
     angular.module('photocloud')
         .run(run);
 
-    run.$inject = ['$rootScope', '$state', 'session'];
+    run.$inject = ['$rootScope', '$state', 'tokenProvider'];
 
-    function run($rootScope, $state, session) {
+    function run($rootScope, $state, tokenProvider) {
         $rootScope.$on('$stateChangeStart', stateChangeStart);
 
         function stateChangeStart(event, next) {
-            var sessionInfo = session.get();
-            console.log(sessionInfo);
-            if (sessionInfo && sessionInfo.isAuthenticated) {
-                if (next.url !== '/settings' && !sessionInfo.isActive) {
+            var accessToken = tokenProvider.getAccessToken();
+
+            if (accessToken && accessToken.isValid) {
+                if (next.url !== '/settings' && !accessToken.isActive) {
                     $state.go('settings', {
                         isRedirected: true
                     });
                     event.preventDefault();
                 } else if (next.url === '/signin' || next.url === '/signup') {
-                    $state.go('feed');
+                    $state.go('posts');
                     event.preventDefault();
                 }
             } else if (next.url !== '/signin' && next.url === '/') {
