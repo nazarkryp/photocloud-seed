@@ -4,13 +4,13 @@
     angular.module('photocloud')
         .service('tokenProvider', tokenProvider);
 
-    tokenProvider.$inject = ['session'];
+    tokenProvider.$inject = ['sessionStorage'];
 
-    function tokenProvider(session) {
+    function tokenProvider(sessionStorage) {
         var refreshTimeout = 5;
 
         this.getAccessToken = function () {
-            var accessToken = session.get();
+            var accessToken = sessionStorage.get();
 
             if (accessToken) {
                 var tokenExpirationData = new Date(accessToken['.expires']);
@@ -22,7 +22,7 @@
                 accessToken.isValid = expiresIn > 0;
 
                 if (!accessToken.isValid) {
-                    session.clear();
+                    sessionStorage.clear();
                 }
             }
 

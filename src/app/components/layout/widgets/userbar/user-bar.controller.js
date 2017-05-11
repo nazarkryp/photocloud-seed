@@ -4,20 +4,19 @@
     angular.module('photocloud')
         .controller('UserBarController', UserBarController);
 
-    UserBarController.$inject = ['$scope', '$state', 'userProvider', 'session'];
+    UserBarController.$inject = ['$scope', '$state', 'userProvider'];
 
-    function UserBarController($scope, $state, userProvider, session) {
+    function UserBarController($scope, $state, userProvider) {
         var vm = this;
 
-        vm.$onInit = function () {
-            vm.currentUser = userProvider.currentUser;
+        vm.currentUser = {};
 
-            console.log(vm.currentUser);
+        vm.$onInit = function () {
+            vm.currentUser = userProvider.getUser();
         };
 
         vm.logout = function () {
-            console.log('logout');
-            session.clear();
+            userProvider.logout();
             $state.go('signin');
         };
     }
