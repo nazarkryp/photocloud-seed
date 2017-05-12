@@ -9,10 +9,14 @@
     function UserBarController($scope, $state, userProvider) {
         var vm = this;
 
-        vm.currentUser = {};
+        vm.userProvider = userProvider;
+
+        $scope.$watch('vm.userProvider.currentUser.isAuthenticated', function (isAuthenticated) {
+            vm.currentUser.isAuthenticated = isAuthenticated;
+        });
 
         vm.$onInit = function () {
-            vm.currentUser = userProvider.getUser();
+            vm.currentUser = userProvider.currentUser;
         };
 
         vm.logout = function () {

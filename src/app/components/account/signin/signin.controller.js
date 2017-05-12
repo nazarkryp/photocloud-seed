@@ -10,11 +10,11 @@
         var vm = this;
 
         vm.isLoading = false;
-        vm.error = false;
+        vm.error = null;
 
         vm.signIn = function (account) {
             vm.isLoading = true;
-            vm.error = false;
+            vm.error = null;
             accountService.signIn(account)
                 .then(onAuthorizationSuccess, onAuthenticationError);
         };
@@ -33,9 +33,9 @@
 
         function onAuthenticationError(error) {
             vm.isLoading = false;
-            vm.error = true;
 
-            logger.toast(error);
+            vm.error = error.data.error;
+            logger.toast(error.data.error);
         }
     }
 })();

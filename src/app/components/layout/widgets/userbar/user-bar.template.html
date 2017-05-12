@@ -1,6 +1,6 @@
 <div layout="row" layout-align="center center" ng-if="!vm.currentUser.isAuthenticated">
     <md-button ui-sref="signup">Create Account</md-button>
-    <md-button ui-sref="signin" class="md-primary">Sign In</md-button>
+    <md-button class="md-primary md-raised" ui-sref="signin">Sign In</md-button>
 </div>
 <div layout="row" layout-align="center center" ng-if="vm.currentUser.isAuthenticated">
     <!--<md-button class="md-icon-button">

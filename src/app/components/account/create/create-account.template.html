@@ -1,3 +1,41 @@
-<div>
-    Create account
+<div class="content" layout="column" layout-align="center center">
+    <div class="box" md-whiteframe="1">
+        <div class="box-header">
+            <md-progress-linear md-mode="indeterminate" ng-if="vm.isLoading"></md-progress-linear>
+            <div class="md-padding left">
+                <h2>Create account</h2>
+                <span class="description">One account is all you need</span>
+            </div>
+        </div>
+        <form class="box-content" ng-submit="vm.signIn(vm.account)">
+            <div class="md-padding">
+                <md-input-container class="md-block" flex>
+                    <md-icon>home</md-icon>
+                    <input type="text" placeholder="Username" ng-model="vm.account.username" aria-label="account">
+                </md-input-container>
+                <md-input-container class="md-block" flex>
+                    <md-icon>email</md-icon>
+                    <input type="email" placeholder="E-mail address" ng-model="vm.account.username" aria-label="account">
+                </md-input-container>
+                <md-input-container class="md-block" flex>
+                    <md-icon>lock</md-icon>
+                    <input type="password" placeholder="Password" ng-model="vm.account.password" aria-label="account">
+                </md-input-container>
+                <md-input-container class="md-block" flex>
+                    <md-icon>lock</md-icon>
+                    <input type="password" placeholder="Confirm password" ng-model="vm.account.confirmPassword" aria-label="account">
+                </md-input-container>
+                <div layout="row" layout-align="end center">
+                    <md-button class="md-raised md-primary md-block" type="submit" ng-disabled="vm.isLoading">
+                        {{ vm.isLoading ? 'Loading' : 'Create Account' }}
+                    </md-button>
+                </div>
+                <div layout="column" layout-align="center center">
+                    <div class="md-padding error" ng-if="vm.error">
+                        <span>{{vm.error}}</span>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>

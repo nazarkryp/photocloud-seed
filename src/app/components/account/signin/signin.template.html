@@ -9,10 +9,10 @@
         </div>
         <form class="box-content" ng-submit="vm.signIn(vm.account)">
             <div class="md-padding">
-                <md-input-container class="md-block" md-no-float flex>
+                <md-input-container class="md-block" flex>
                     <input type="text" placeholder="Username" ng-model="vm.account.username" aria-label="account">
                 </md-input-container>
-                <md-input-container class="md-block" md-no-float flex>
+                <md-input-container class="md-block" flex>
                     <input type="password" placeholder="Password" ng-model="vm.account.password" aria-label="account">
                 </md-input-container>
                 <div layout="row" layout-align="space-between center">
@@ -25,7 +25,7 @@
                 </div>
                 <div layout="column" layout-align="center center">
                     <div class="md-padding error" ng-if="vm.error">
-                        <span>Sorry, your password was incorrect. Please double-check your password.</span>
+                        <span>{{vm.error}}</span>
                     </div>
                     <div class="md-block md-padding top">
                         <md-divider class="md-block md-padding top"></md-divider>

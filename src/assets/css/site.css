@@ -122,9 +122,9 @@ a {
     text-decoration: none;
 }
 
-a:visited {
+/*a:visited {
     color: rgb(33, 150, 243);
-}
+}*/
 
 .md-padding.left {
     padding: 0px 0px 0px 16px;
@@ -161,4 +161,8 @@ a:visited {
 .error {
     color: #ed4956;
     text-align: center;
+}
+
+.md-button {
+    padding: 1px 6px 0px 6px !important;
 }
