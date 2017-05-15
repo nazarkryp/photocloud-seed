@@ -71,6 +71,7 @@ md-progress-circular.md-black path {
 }
 
 .md-block {
+    position: relative;
     display: block;
     width: 100%;
 }
@@ -113,14 +114,15 @@ h2 {
 
 .box-header {}
 
-.box-content {
-}
+.box-content {}
 
-.box-footer {}
+.box-footer {
+}
 
 a {
     text-decoration: none;
 }
+
 
 /*a:visited {
     color: rgb(33, 150, 243);
@@ -142,13 +144,21 @@ a {
     padding: 0px 0px 16px 0px;
 }
 
-.md-padding-wide {
+.md-padding.wide {
     padding: 0px 16px 0px 16px;
 }
 
 .thumbnail-small {
     height: 40px;
     width: 40px;
+    border-radius: 90px 90px 90px 90px;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.thumbnail-medium {
+    height: 55px;
+    width: 55px;
     border-radius: 90px 90px 90px 90px;
     object-fit: cover;
     overflow: hidden;
@@ -165,4 +175,69 @@ a {
 
 .md-button {
     padding: 1px 6px 0px 6px !important;
+}
+
+.post {
+    width: 50%;
+    background-color: white;
+    /*border: 1px solid #efefef;*/
+    position: relative;
+}
+
+.post-header {
+    display: inline-flex;
+    width: 100%;
+    padding: 10px 0px 10px 10px;
+}
+
+.post-footer {
+    display: inline-flex;
+    width: 100%;
+    padding: 10px 0px 10px 10px;
+    position: relative;
+}
+
+.post-content {
+    width: 100%;
+}
+
+.post-image {
+    width: 100%;
+    height: auto;
+}
+
+.post-details {
+    padding: 10px 10px 10px 10px;
+}
+
+.post-caption {
+    display: inline-flex;
+}
+
+.md-subhead {
+    margin: 0px;
+    padding: 0px;
+}
+
+.post-link {
+    color: black;
+}
+
+md-input-container.light-container {
+    margin: 2px 0px 0px 0px !important;
+    width: 100%;
+}
+
+md-input-container:not(.md-input-invalid).md-input-focused .md-input.md-input-light {
+    border: none;
+    padding: 0px 2px 0px 2px;
+}
+
+md-input-container.md-default-theme .md-input,
+md-input-container .md-input-light {
+    border: none;
+}
+
+.md-no-spacer .md-errors-spacer {
+    min-height: 0px !important;
 }

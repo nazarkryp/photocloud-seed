@@ -36,6 +36,8 @@
 
             vm.error = error.data.error;
             logger.toast(error.data.error);
+
+            
         }
     }
 })();

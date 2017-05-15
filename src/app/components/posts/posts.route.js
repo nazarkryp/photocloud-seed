@@ -20,6 +20,16 @@
                 controllerAs: 'vm',
                 title: 'Home'
             }
+        },
+        {
+            state: 'userposts',
+            config: {
+                url: '/:username',
+                templateUrl: 'app/components/posts/user-posts/user-posts.template.html',
+                controller: 'UserPostsController',
+                controllerAs: 'vm',
+                title: 'User'
+            }
         }];
     }
 })();
