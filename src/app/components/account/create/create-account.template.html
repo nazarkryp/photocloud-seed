@@ -7,23 +7,45 @@
                 <span class="description">One account is all you need</span>
             </div>
         </div>
-        <form class="box-content" ng-submit="vm.signIn(vm.account)">
+        <form name="signUpForm" class="box-content" ng-submit="vm.create(vm.account)">
             <div class="md-padding">
                 <md-input-container class="md-block" flex>
                     <md-icon>home</md-icon>
-                    <input type="text" placeholder="Username" ng-model="vm.account.username" aria-label="account">
+                    <input name="username" required type="text" placeholder="Username" ng-model="vm.account.username" aria-label="account">
+                    <div ng-messages="signUpForm.username.$error" role="alert">
+                        <div ng-message="required">
+                            Username must not be empty
+                        </div>
+                    </div>
                 </md-input-container>
                 <md-input-container class="md-block" flex>
                     <md-icon>email</md-icon>
-                    <input type="email" placeholder="E-mail address" ng-model="vm.account.username" aria-label="account">
+                    <input name="email" required type="email" placeholder="E-mail address" ng-model="vm.account.email" aria-label="account">
+                    <div ng-messages="signUpForm.email.$error" role="alert">
+                        <div ng-message="required">
+                            Email address must not be empty
+                        </div>
+                    </div>
                 </md-input-container>
                 <md-input-container class="md-block" flex>
                     <md-icon>lock</md-icon>
-                    <input type="password" placeholder="Password" ng-model="vm.account.password" aria-label="account">
+                    <input name="password" required type="password" placeholder="Password" ng-model="vm.account.password" minlength="6" aria-label="account">
+                    <div ng-messages="signUpForm.email.$error" role="alert">
+                        <div ng-message="minlength">
+                            Password length should be at least 6 symbols
+                        </div>
+                        <div ng-message="required">
+                            Password must not be empty
+                        </div>
+                    </div>
                 </md-input-container>
                 <md-input-container class="md-block" flex>
                     <md-icon>lock</md-icon>
-                    <input type="password" placeholder="Confirm password" ng-model="vm.account.confirmPassword" aria-label="account">
+                    <input name="confirmPassword" required type="password" placeholder="Confirm password" ng-model="vm.account.confirmPassword"
+                        minlength="6" aria-label="account" compare-to="vm.account.password">
+                    <div ng-messages="signUpForm.confirmPassword.$error" role="alert">
+                        <div ng-message="compareTo">Confirm password does not match password</div>
+                    </div>
                 </md-input-container>
                 <div layout="row" layout-align="end center">
                     <md-button class="md-raised md-primary md-block" type="submit" ng-disabled="vm.isLoading">
@@ -31,8 +53,8 @@
                     </md-button>
                 </div>
                 <div layout="column" layout-align="center center">
-                    <div class="md-padding error" ng-if="vm.error">
-                        <span>{{vm.error}}</span>
+                    <div class="error" ng-if="vm.errors.length > 0">
+                        <p ng-repeat="error in vm.errors">{{error}}</p>
                     </div>
                 </div>
             </div>

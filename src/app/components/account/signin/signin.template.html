@@ -7,13 +7,26 @@
                 <span class="description">to continue to PhotoCloud</span>
             </div>
         </div>
-        <form class="box-content" ng-submit="vm.signIn(vm.account)">
+        <form name="signInForm" class="box-content" ng-submit="vm.signIn(vm.account)">
             <div class="md-padding">
                 <md-input-container class="md-block" flex>
-                    <input type="text" placeholder="Username" ng-model="vm.account.username" aria-label="account">
+                    <input name="username" required type="text" placeholder="Username" ng-model="vm.account.username" aria-label="account">
+                    <div ng-messages="signInForm.username.$error" role="alert">
+                        <div ng-message="required">
+                            Username must not be empty
+                        </div>
+                    </div>
                 </md-input-container>
                 <md-input-container class="md-block" flex>
-                    <input type="password" placeholder="Password" ng-model="vm.account.password" aria-label="account">
+                    <input name="password" required minlength="6" type="password" placeholder="Password" ng-model="vm.account.password" aria-label="account">
+                    <div ng-messages="signInForm.password.$error" role="alert">
+                        <div ng-message="minlength">
+                            Password length should be at least 6 symbols
+                        </div>
+                        <div ng-message="required">
+                            Password must not be empty
+                        </div>
+                    </div>
                 </md-input-container>
                 <div layout="row" layout-align="space-between center">
                     <div class="md-padding top">
@@ -31,7 +44,9 @@
                         <md-divider class="md-block md-padding top"></md-divider>
                     </div>
                     <div class="md-padding">
-                        <span class="md-padding right">Have no account?</span><a ui-sref="signup">Sign up for free</a>
+                        <!--<span class="md-padding right">Have no account?</span><a ui-sref="signup">Sign up for free</a>-->
+                        <span class="md-padding right">Have no account?</span>
+                        <md-button class="md-primary" ui-sref="signup">Sign up for free</md-button>
                     </div>
                 </div>
             </div>

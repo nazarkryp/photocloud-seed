@@ -16,7 +16,7 @@
         });
 
         vm.$onInit = function () {
-            vm.currentUser = userProvider.currentUser;
+            vm.currentUser = userProvider.getUser();
         };
 
         vm.logout = function () {

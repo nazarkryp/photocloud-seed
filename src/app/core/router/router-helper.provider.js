@@ -17,7 +17,7 @@
             window.location.hash = '/';
         }
 
-        //$locationProvider.html5Mode(true);
+        // $locationProvider.html5Mode(true);
 
         this.configure = function (cfg) {
             angular.extend(config, cfg);
@@ -25,6 +25,7 @@
 
         this.$get = RouterHelper;
         RouterHelper.$inject = ['$location', '$rootScope', '$state'];
+
         /* @ngInject */
         function RouterHelper($location, $rootScope, $state) {
             var handlingStateChangeError = false;
@@ -46,10 +47,10 @@
 
             function configureStates(states, otherwisePath) {
                 states.forEach(function (state) {
-                    state.config.resolve =
-                        angular.extend(state.config.resolve || {}, config.resolveAlways);
+                    state.config.resolve = angular.extend(state.config.resolve || {}, config.resolveAlways);
                     $stateProvider.state(state.state, state.config);
                 });
+
                 if (otherwisePath && !hasOtherwise) {
                     hasOtherwise = true;
                     $urlRouterProvider.otherwise(otherwisePath);
@@ -62,6 +63,7 @@
                         if (handlingStateChangeError) {
                             return;
                         }
+
                         stateCounts.errors++;
                         handlingStateChangeError = true;
                         var destination = (toState && (toState.title || toState.name || toState.loadedTemplateUrl)) || 'unknown target';
@@ -85,7 +87,7 @@
                         stateCounts.changes++;
                         handlingStateChangeError = false;
                         var title = config.docTitle + ' ' + (toState.title || '');
-                        $rootScope.title = title; // data bind to <title>
+                        $rootScope.title = title;
                     }
                 );
             }

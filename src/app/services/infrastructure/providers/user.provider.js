@@ -15,7 +15,7 @@
             var session = sessionStorage.get();
 
             if (session) {
-                var pictureUri = session ? session.pictureUri : 'assets/images/user.png';
+                var pictureUri = session.pictureUri ? session.pictureUri : 'assets/images/user.png';
 
                 self.currentUser.username = session.userName;
                 self.currentUser.pictureUri = pictureUri;
@@ -30,7 +30,7 @@
         };
 
         self.setUser = function (session) {
-            var pictureUri = session.pictureUri ? session.pictureUri : 'assets/images/user.png';
+            var pictureUri = (session.pictureUri || session.pictureUri.lenth === 0) ? session.pictureUri : 'assets/images/user.png';
 
             session.isActive = session.isActive === 'true';
             session.isPrivate = session.isPrivate === 'true';

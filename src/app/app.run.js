@@ -18,7 +18,7 @@
                         isRedirected: true
                     });
                     event.preventDefault();
-                } else if (next.url === '/signin' || next.url === '/signup') {
+                } else if (next.url === '/signin' || next.url === '/account/create') {
                     $state.go('posts');
                     event.preventDefault();
                 }

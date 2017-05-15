@@ -5,6 +5,6 @@
         .component('userBar', {
             controller: 'UserBarController',
             controllerAs: 'vm',
-            templateUrl: 'app/components/layout/widgets/userbar/user-bar.template.html',
+            templateUrl: 'app/components/layout/widgets/userbar/user-bar.template.html'
         });
 })();
