@@ -1,0 +1,53 @@
+<div md-whiteframe="1">
+    <div class="post-header" layout="row" flex>
+        <img class="thumbnail-small" ng-src="{{vm.post.user.pictureUri}}" alt="profile">
+        <div class="md-padding left" layout="row" layout-align="space-between center" flex>
+            <a class="md-body-2">{{vm.post.user.username}}</a>
+            <md-button class="md-icon-button">
+                <md-icon>expand_more</md-icon>
+            </md-button>
+        </div>
+    </div>
+    <div class="post-content">
+        <div class="post-content-buttons" layout="row" layout-align="space-between center">
+            <md-button class="md-icon-button" ng-click="vm.previous()">
+                <md-icon>chevron_left</md-icon>
+            </md-button>
+            <md-button class="md-icon-button" ng-click="vm.next()">
+                <md-icon>chevron_right</md-icon>
+            </md-button>
+        </div>
+        <img class="post-image" ng-src="{{vm.post.attachments[vm.post.activeAttachment].uri}}" alt="post-image">
+    </div>
+    <div class="post-details">
+        <div>
+            <span class="md-subhead"><strong>{{vm.post.likesCount}} likes</strong></span>
+        </div>
+        <a class="md-body-2 post-link" href="#"><strong>{{vm.post.user.username}}</strong></a>
+        <span>{{vm.post.caption}}</span>
+        <div class="post-comments">
+            <div class="comment" ng-repeat="comment in vm.post.comments">
+                <a class="md-body-2 post-link" href="#"><strong>{{comment.user.username}}</strong></a>
+                <span>{{comment.text}}</span>
+            </div>
+            <a class="md-body-2 description" href="#"><strong>View all 100 comments</strong></a>
+        </div>
+        <div>
+            <span class="md-body-2 description">{{vm.post.created | date}}</span>
+        </div>
+    </div>
+    <div class="md-padding wide">
+        <md-divider class="md-block"></md-divider>
+    </div>
+    <div class="post-footer">
+        <md-button class="md-icon-button">
+            <md-icon ng-class="{ 'danger' : vm.post.userHasLiked }">favorite_border</md-icon>
+        </md-button>
+        <md-input-container class="light-container md-no-spacer" md-no-float>
+            <input class="md-input-light" type="text" placeholder="Add comment">
+        </md-input-container>
+        <md-button class="md-icon-button" ng-click="vm.share()">
+            <md-icon>share</md-icon>
+        </md-button>
+    </div>
+</div>

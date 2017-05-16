@@ -23,7 +23,7 @@ md-toolbar:not(.md-menu-toolbar) {
     height: 70px;
     background-color: white;
     color: #262626;
-    border-bottom: 1px solid #efefef;
+    /*border-bottom: 1px solid #efefef;*/
 }
 
 md-progress-linear {
@@ -92,7 +92,7 @@ h2 {
 .content {
     min-height: calc(100vh - 70px - 70px);
     width: 100%;
-    padding-top: 25px;
+    padding: 50px 0 50px 0;
 }
 
 .container {
@@ -116,8 +116,7 @@ h2 {
 
 .box-content {}
 
-.box-footer {
-}
+.box-footer {}
 
 a {
     text-decoration: none;
@@ -164,8 +163,20 @@ a {
     overflow: hidden;
 }
 
+.thumbnail-big {
+    height: 100px;
+    width: 100px;
+    border-radius: 90px 90px 90px 90px;
+    object-fit: cover;
+    overflow: hidden;
+}
+
 .description {
     color: #808080;
+}
+
+.danger {
+    color: #ed4956;
 }
 
 .error {
@@ -179,6 +190,7 @@ a {
 
 .post {
     width: 50%;
+    max-width: 600px;
     background-color: white;
     /*border: 1px solid #efefef;*/
     position: relative;
@@ -193,11 +205,20 @@ a {
 .post-footer {
     display: inline-flex;
     width: 100%;
-    padding: 10px 0px 10px 10px;
+    padding: 10px 0px 10px 0px;
     position: relative;
 }
 
 .post-content {
+    width: 100%;
+    position: relative;
+}
+
+.post-content-buttons {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 100%;
 }
 
@@ -223,6 +244,11 @@ a {
     color: black;
 }
 
+.user-posts-header {
+    width: 100%;
+    /*display: inline-flex;*/
+}
+
 md-input-container.light-container {
     margin: 2px 0px 0px 0px !important;
     width: 100%;
@@ -240,4 +266,8 @@ md-input-container .md-input-light {
 
 .md-no-spacer .md-errors-spacer {
     min-height: 0px !important;
+}
+
+.search-bar {
+    max-width: 600px;
 }
