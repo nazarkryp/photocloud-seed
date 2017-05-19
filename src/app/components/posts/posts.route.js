@@ -34,9 +34,9 @@
             {
                 state: 'post',
                 config: {
-                    url: '/p/:postid',
-                    templateUrl: 'app/components/posts/post/post.template.html',
-                    controller: 'PostController',
+                    url: '/p/:postId',
+                    templateUrl: 'app/components/posts/post-details/post-details.template.html',
+                    controller: 'PostDetailsController',
                     controllerAs: 'vm',
                     title: 'Post'
                 }

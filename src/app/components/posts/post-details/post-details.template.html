@@ -1,0 +1,9 @@
+<div class="content" layout="column" layout-align="center center">
+    <div class="md-padding">
+        <img ng-src="{{vm.post.attachments[0].uri}}" alt="attachment">
+    </div>
+    <div class="md-padding" ng-if="vm.error">
+        <h1>Sorry, this page isn't available.</h1>
+        <span>The link you followed may be broken, or the page may have been removed. Go back to <a ui-sref="posts">PhotoCloud</a>.</span>
+    </div>
+</div>

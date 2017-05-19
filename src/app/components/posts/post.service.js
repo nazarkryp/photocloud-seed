@@ -31,10 +31,16 @@
             return deferred.promise;
         };
 
-        this.getUserPosts = function (username) {
+        this.getUserPosts = function (username, pagination) {
             var deferred = $q.defer();
 
-            httpService.get('posts/users/' + username, deferred);
+            var requestUri = 'posts/users/' + username;
+
+            if (pagination) {
+                requestUri = requestUri + '?next=' + pagination.next;
+            }
+
+            httpService.get(requestUri, deferred);
 
             return deferred.promise;
         };

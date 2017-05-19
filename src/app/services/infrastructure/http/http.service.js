@@ -4,11 +4,11 @@
     angular.module('photocloud')
         .service('httpService', httpService);
 
-    httpService.$inject = ['$http', 'httpConfiguration'];
+    httpService.$inject = ['$http', 'environment'];
 
-    function httpService($http, httpConfiguration) {
+    function httpService($http, environment) {
         this.get = function (url, deferred) {
-            $http.get(httpConfiguration.baseUri + url)
+            $http.get(environment.requestUri + url)
                 .then(onSuccess, onError);
 
             function onSuccess(response) {
@@ -21,7 +21,7 @@
         };
 
         this.post = function (url, data, deferred) {
-            $http.post(httpConfiguration.baseUri + url, data)
+            $http.post(environment.requestUri + url, data)
                 .then(onSuccess, onError);
 
             function onSuccess(response) {

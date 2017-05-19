@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
+
 html {
     overflow-y: scroll;
 }
@@ -112,16 +113,18 @@ h2 {
     background-color: white;
 }
 
-.box-header {}
+.box-header {
+}
 
-.box-content {}
+.box-content {
+}
 
-.box-footer {}
+.box-footer {
+}
 
 a {
     text-decoration: none;
 }
-
 
 /*a:visited {
     color: rgb(33, 150, 243);
@@ -169,6 +172,11 @@ a {
     border-radius: 90px 90px 90px 90px;
     object-fit: cover;
     overflow: hidden;
+}
+
+.thumbnail {
+    width: 300px;
+    height: 300px;
 }
 
 .description {
@@ -242,6 +250,11 @@ a {
 
 .post-link {
     color: black;
+}
+
+.user-post {
+    width: 300px;
+    height: 300px;
 }
 
 .user-posts-header {
