@@ -14,21 +14,23 @@
         vm.query = null;
 
         vm.search = function (searchQuery) {
-            if (searchQuery) {
-                return searchBarService.search(searchQuery);
-            }
-
             var deferred = $q.defer();
-            deferred.resolve([]);
+
+            if (searchQuery) {
+                searchBarService.search(searchQuery)
+                    .then(function (response) {
+                        deferred.resolve(response.data);
+                    });
+            } else {
+                deferred.resolve([]);
+            }
 
             return deferred.promise;
         };
 
         vm.selectedItemChange = function (selectedItem) {
             if (selectedItem) {
-                $state.go('userfeed', {
-                    username: selectedItem.username
-                });
+                $state.go('userposts', {username: selectedItem.username});
                 selectedItem = null;
             }
         };

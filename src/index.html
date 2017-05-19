@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
 
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 
     <!-- build:css({.tmp,src}) styles/vendor.css -->
     <!-- bower:css -->
@@ -23,57 +23,47 @@
 </head>
 
 <body ng-controller="IndexController as vm" ng-cloak>
-    <header>
-        <md-toolbar class="md-toolbar-white" md-whiteframe="1">
-            <div class="md-toolbar-tools" layout="row" layout-align="center center">
-                <div class="container" layout="row" layout="row" layout-align="space-between center">
-                    <div class="col-x1">
-                        <a class="title" ui-sref="posts">photocloud</a>
-                    </div>
-                    <div class="col-x2" layout="row" layout-align="center center">
-                        <search-bar class="search-bar" flex></search-bar>
-                    </div>
-                    <div class="col-x1">
-                        <user-bar></user-bar>
-                    </div>
+<header>
+    <md-toolbar class="md-toolbar-white" md-whiteframe="1">
+        <div class="md-toolbar-tools" layout="row" layout-align="center center">
+            <div class="container" layout="row" layout-align="space-between center">
+                <div class="col-x1">
+                    <a class="title" ui-sref="posts">photocloud</a>
+                </div>
+                <div class="col-x2" layout="row" layout-align="center center">
+                    <search-bar class="search-bar" flex></search-bar>
+                </div>
+                <div class="col-x1">
+                    <user-bar></user-bar>
                 </div>
             </div>
-        </md-toolbar>
-    </header>
-    <!--<div>
-        <ul>
-            <li>
-                <a ui-sref="posts">home</a>
-                <a ui-sref="about">about</a>
-                <a ui-sref="signin">signin</a>
-                <a ui-sref="signup">create</a>
-            </li>
-        </ul>
-    </div>-->
-    <main>
-        <div ui-view></div>
-    </main>
-
-    <footer>
-        <div class="footer" layout="row" layout-align="center center">
-            <span>Copyright &copy; {{ vm.date | date : 'yyyy' }} PhotoCloud</span>
         </div>
-    </footer>
+    </md-toolbar>
+</header>
+<main>
+    <div ui-view></div>
+</main>
 
-    <!-- build:js({.tmp,src}) scripts/vendor.js -->
-    <!-- bower:js -->
-    <!-- run `gulp inject` to automatically populate bower script dependencies -->
-    <!-- endbower -->
-    <!-- endbuild -->
+<footer>
+    <div class="footer" layout="row" layout-align="center center">
+        <span>Copyright &copy; {{ vm.date | date : 'yyyy' }} PhotoCloud</span>
+    </div>
+</footer>
 
-    <!-- build:js({.tmp,src}) scripts/app.js -->
-    <!-- inject:js -->
-    <!-- js files will be automatically insert here -->
-    <!-- endinject -->
-    <!-- inject:partials -->
-    <!-- angular templates will be automatically converted in js and inserted here -->
-    <!-- endinject -->
-    <!-- endbuild -->
+<!-- build:js({.tmp,src}) scripts/vendor.js -->
+<!-- bower:js -->
+<!-- run `gulp inject` to automatically populate bower script dependencies -->
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js({.tmp,src}) scripts/app.js -->
+<!-- inject:js -->
+<!-- js files will be automatically insert here -->
+<!-- endinject -->
+<!-- inject:partials -->
+<!-- angular templates will be automatically converted in js and inserted here -->
+<!-- endinject -->
+<!-- endbuild -->
 
 </body>
 

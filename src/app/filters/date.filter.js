@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('photocloud')
-        .filter('date', date);
+        .filter('dateAgo', date);
 
     date.$inject = ['$filter'];
 

@@ -5,6 +5,8 @@
         .controller('IndexController', IndexController);
 
     function IndexController() {
+        var vm = this;
 
+        vm.date = new Date();
     }
 })();
