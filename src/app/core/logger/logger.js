@@ -44,12 +44,19 @@
         }
 
         function show(message) {
-            $mdToast.show(
-                $mdToast.simple()
+            var toast = $mdToast
+                .simple()
                 .textContent(message)
                 .position('bottom right')
-                .hideDelay(2000)
-            );
+                .hideDelay(2000);
+
+            var toastContainer = document.getElementById('toast-container');
+
+            if (toastContainer) {
+                toast.parent(toastContainer);
+            }
+
+            $mdToast.show(toast);
         }
     }
 })();

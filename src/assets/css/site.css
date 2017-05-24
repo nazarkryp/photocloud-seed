@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
-
 html {
     overflow-y: scroll;
 }
@@ -113,18 +112,16 @@ h2 {
     background-color: white;
 }
 
-.box-header {
-}
+.box-header {}
 
-.box-content {
-}
+.box-content {}
 
-.box-footer {
-}
+.box-footer {}
 
 a {
     text-decoration: none;
 }
+
 
 /*a:visited {
     color: rgb(33, 150, 243);
@@ -222,6 +219,7 @@ a {
 .post-content {
     width: 100%;
     position: relative;
+    height: auto;
 }
 
 .post-content-buttons {
@@ -234,7 +232,7 @@ a {
 
 .post-image {
     width: 100%;
-    height: auto;
+    height: 100%;
 }
 
 .post-details {
@@ -301,7 +299,8 @@ a.md-body-2 {
 }
 
 .md-autocomplete-suggestions-container {
-    z-index: 100000 !important; /* any number of choice > 1050*/
+    z-index: 100000 !important;
+    /* any number of choice > 1050*/
 }
 
 md-autocomplete-wrap {
@@ -319,4 +318,13 @@ md-virtual-repeat-container.md-autocomplete-suggestions-container {
 
 .md-virtual-repeat-container.md-autocomplete-suggestions-container {
     height: 100% !important;
+}
+
+#toast-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
 }
