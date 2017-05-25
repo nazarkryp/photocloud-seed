@@ -38,16 +38,7 @@
         };
 
         vm.$onInit = function () {
-            if (vm.post) {
-                vm.post.attachments.push({
-                    id: 2,
-                    uri: 'https://scontent-frt3-1.cdninstagram.com/t51.2885-15/e35/18443101_370887746640333_449313983581650944_n.jpg'
-                });
-
-                vm.post.activeAttachment = 0;
-            } else {
-                console.log($stateParams.postId);
-            }
+            vm.post.activeAttachment = 0;
         };
     }
 })(angular);

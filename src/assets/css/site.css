@@ -353,3 +353,9 @@ md-fab-speed-dial.md-fab-bottom-right {
 .md-button.md-fab {
     background-color: #ed4956;
 }
+
+.shadow {
+    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.2), 
+    3px 3px 3px 3px rgba(0, 0, 0, 0.14),
+     0px 2px 1px 4px rgba(0, 0, 0, 0.12)
+}

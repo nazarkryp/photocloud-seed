@@ -1,5 +1,5 @@
 <md-dialog flex="50">
-    <md-toolbar md-whiteframe="1">
+    <md-toolbar layout="row" layout-align="center center" md-whiteframe="1">
         <div class="md-toolbar-tools">
             <h2>Create Post</h2>
             <span flex></span>
@@ -8,15 +8,46 @@
             </md-button>
         </div>
     </md-toolbar>
-    <md-dialog-content class="post-upload-content">
+    <md-dialog-content class="post-upload-content" layout="column" layout-align="start start">
+        <div class="md-block md-padding">
+            <span>Photos</span>
+            <div class="md-block" layout="row" layout-align="start center" style="height: 95px;overflow-x: auto;white-space: nowrap;">
+                <img src="https://scontent-fra3-1.cdninstagram.com/t51.2885-19/s320x320/14063102_1827790180777684_148118733_a.jpg" alt="img1"
+                    style="width: 75px; height: 75px;">
+                <img src="https://scontent-fra3-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/c0.135.1080.1080/18160447_1870969066491998_6815217847178887168_n.jpg"
+                    alt="img1" style="width: 75px; height: 75px;">
+                <img src="https://scontent-fra3-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/c134.0.811.811/18382064_175235713001817_1843253934555136_n.jpg"
+                    alt="img1" style="width: 75px; height: 75px;">
+                <img src="https://scontent-fra3-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/c0.135.1080.1080/17933969_829602977186764_5139325808757702656_n.jpg"
+                    alt="img1" style="width: 75px; height: 75px;">
+                <img src="https://scontent-fra3-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/c136.0.807.807/17881230_413805432319271_1208450252013568000_n.jpg"
+                    alt="img1" style="width: 75px; height: 75px;">
+                <img src="https://scontent-fra3-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/c0.100.1080.1080/14693869_1797029773904756_231017245650714624_n.jpg"
+                    alt="img1" style="width: 75px; height: 75px;">
+                <img src="https://scontent-fra3-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/c37.0.960.960/14309756_348331425506761_4123883424157007872_n.jpg"
+                    alt="img1" style="width: 75px; height: 75px;">
+                <img src="https://scontent-fra3-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/c0.135.1080.1080/10724727_438400359617822_497060306_n.jpg"
+                    alt="img1" style="width: 75px; height: 75px;">
+                <img src="https://scontent-fra3-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/c0.103.1080.1080/12424902_955792707842658_1875501054_n.jpg"
+                    alt="img1" style="width: 75px; height: 75px;">
+                <img src="https://scontent-fra3-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/18013390_1327946023951549_1021647375392833536_n.jpg"
+                    alt="img1" style="width: 75px; height: 75px;">
+                <img src="https://scontent-fra3-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/14271989_1774841219441905_279848895_n.jpg"
+                    alt="img1" style="width: 75px; height: 75px;">
+                <img src="https://scontent-fra3-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/c0.134.1080.1080/14033417_178894212519808_1675329581_n.jpg"
+                    alt="img1" style="width: 75px; height: 75px;">
+            </div>
+        </div>
+    </md-dialog-content>
+    <!--<md-dialog-content class="post-upload-content" layout="column" layout-align="center center">
         <div layout="column" layout-align="center center">
             <div class="md-padding">
                 <span>Whoops! You haven't added any photos yet. Let's add them now.</span>
             </div>
             <md-button class="md-raised">Browse for images</md-button>
         </div>
-    </md-dialog-content>
-    <md-dialog-actions class="md-block">
+    </md-dialog-content>-->
+    <md-dialog-actions class="md-block shadow">
         <div class="create-post-footer" layout="row" layout-align="space-between center">
             <md-button class="md-raised">Cancel</md-button>
             <md-button class="md-raised md-primary">Continue</md-button>
