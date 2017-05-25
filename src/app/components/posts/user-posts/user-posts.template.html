@@ -1,9 +1,9 @@
 <div class="content" layout="column" layout-align="start center">
     <div class="user-info-bar" layout="row" layout-align="center center" ng-if="vm.user">
-        <img class="thumbnail-big" ng-src="{{vm.user.pictureUri}}" alt="profile"/>
+        <img class="thumbnail-big" ng-src="{{vm.user.pictureUri}}" alt="profile" />
         <div class="md-padding" layout="column" layout-align="stretch stretch" flex>
             <div layout="row" layout-align="space-between center">
-                <span class="md-display-1">{{vm.user.username}}</span>
+                <span class="md-display-1 thin">{{vm.user.username}}</span>
             </div>
             <div class="counters" layout="row" layout-align="start center" ng-if="vm.user.isActive">
                 <div flex="20">

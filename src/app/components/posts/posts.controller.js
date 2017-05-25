@@ -4,9 +4,9 @@
     angular.module('photocloud')
         .controller('PostsController', PostsController);
 
-    PostsController.$inject = ['postService'];
+    PostsController.$inject = ['postService', '$mdDialog'];
 
-    function PostsController(postService) {
+    function PostsController(postService, $mdDialog) {
         var vm = this;
 
         vm.data = {
@@ -19,6 +19,17 @@
         };
 
         vm.isLoading = false;
+
+        vm.createPost = function (event) {
+            $mdDialog.show({
+                controller: 'CreatePostController',
+                controllerAs: 'vm',
+                templateUrl: 'app/components/posts/create/create-post.template.html',
+                parent: angular.element(document.body),
+                targetEvent: event,
+                clickOutsideToClose: true
+            });
+        };
 
         function getPosts() {
             vm.isLoading = true;

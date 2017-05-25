@@ -2,9 +2,11 @@
     'use strict';
 
     angular.module('photocloud')
-        .controller('createPost', createPost);
+        .controller('CreatePostController', CreatePostController);
 
-    createPost.$inject = [];
+    CreatePostController.$inject = [];
 
-    function createPost() {}
+    function CreatePostController() {
+
+    }
 })(angular);

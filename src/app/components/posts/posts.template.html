@@ -1,3 +1,10 @@
 <div class="content" layout="column" layout-align="start center">
     <post class="post" ng-repeat="post in vm.data.posts" post="post"></post>
 </div>
+<md-fab-speed-dial class="md-fab-bottom-right" ng-click="vm.createPost($event)">
+    <md-fab-trigger>
+        <md-button class="md-fab" aria-label="Preate Post">
+            <md-icon>photo_camera</md-icon>
+        </md-button>
+    </md-fab-trigger>
+</md-fab-speed-dial>

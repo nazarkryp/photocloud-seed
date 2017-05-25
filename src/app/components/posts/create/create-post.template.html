@@ -1,0 +1,25 @@
+<md-dialog flex="50">
+    <md-toolbar md-whiteframe="1">
+        <div class="md-toolbar-tools">
+            <h2>Create Post</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="vm.cancel()">
+                <md-icon aria-label="Close">close</md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content class="post-upload-content">
+        <div layout="column" layout-align="center center">
+            <div class="md-padding">
+                <span>Whoops! You haven't added any photos yet. Let's add them now.</span>
+            </div>
+            <md-button class="md-raised">Browse for images</md-button>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions class="md-block">
+        <div class="create-post-footer" layout="row" layout-align="space-between center">
+            <md-button class="md-raised">Cancel</md-button>
+            <md-button class="md-raised md-primary">Continue</md-button>
+        </div>
+    </md-dialog-actions>
+</md-dialog>

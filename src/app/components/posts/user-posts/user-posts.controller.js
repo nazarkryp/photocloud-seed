@@ -4,9 +4,9 @@
     angular.module('photocloud')
         .controller('UserPostsController', UserPostsController);
 
-    UserPostsController.$inject = ['$state', '$stateParams', 'postService', 'userService'];
+    UserPostsController.$inject = ['$state', '$stateParams', 'postService', 'user'];
 
-    function UserPostsController($state, $stateParams, postService, userService) {
+    function UserPostsController($state, $stateParams, postService, user) {
         var vm = this;
         vm.user = {};
         vm.data = {
@@ -14,15 +14,6 @@
             hasMoreItems: false,
             pagination: null
         };
-
-        function getUser(username) {
-            userService.getUser(username)
-                .then(function (response) {
-                    vm.user = response;
-                }, function (error) {
-
-                });
-        }
 
         function getUserPosts(username) {
             postService.getUserPosts(username)
@@ -36,11 +27,10 @@
             vm.data.hasMoreItems = response.hasMoreItems;
         }
 
-        function onError(error) {
-        }
+        function onError(error) {}
 
         vm.$onInit = function () {
-            getUser($stateParams.username);
+            vm.user = user;
             getUserPosts($stateParams.username);
         };
     }

@@ -3,9 +3,21 @@
         <img class="thumbnail-small" ng-src="{{vm.post.user.pictureUri}}" alt="profile">
         <div class="md-padding left" layout="row" layout-align="space-between center" flex>
             <a class="md-body-2" ui-sref="userposts({username: vm.post.user.username})">{{vm.post.user.username}}</a>
-            <md-button class="md-icon-button">
-                <md-icon>expand_more</md-icon>
-            </md-button>
+            <md-menu md-offset="0 7">
+                <md-button class="md-icon-button" ng-click="$mdMenu.open($event)">
+                    <md-icon>expand_more</md-icon>
+                </md-button>
+                <md-menu-content width="4">
+                    <md-menu-item>
+                        <md-button>
+                            <md-icon>edit</md-icon>Edit</md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <md-button>
+                            <md-icon>close</md-icon>Remove</md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
         </div>
     </div>
     <div class="post-content" md-ink-ripple>
