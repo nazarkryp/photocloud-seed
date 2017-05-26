@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
+
 html {
     overflow-y: scroll;
 }
@@ -7,10 +8,6 @@ body {
     font-family: 'Roboto', sans-serif;
     font-weight: lighter;
     color: #444444;
-}
-
-main {
-    /*min-height: calc(100vh - 70px - 70px);*/
 }
 
 li {
@@ -118,21 +115,28 @@ h2 {
     width: 50%;
 }
 
-.box {
+.auth-form {
     width: 400px;
     background-color: white;
 }
 
-.box-header {}
+.box {
+    background-color: white;
+    padding: 35px;
+}
 
-.box-content {}
+.box-header {
+}
 
-.box-footer {}
+.box-content {
+}
+
+.box-footer {
+}
 
 a {
     text-decoration: none;
 }
-
 
 /*a:visited {
     color: rgb(33, 150, 243);
@@ -255,8 +259,8 @@ a {
 }
 
 .post-upload-content {
-    min-height: 50vh;
-    background: rgb(250, 250, 250);
+    height: 50vh;
+    background: rgb(240, 241, 241);
 }
 
 .md-subhead {
@@ -314,7 +318,6 @@ a.md-body-2 {
     color: #444444;
 }
 
-
 /*md-autocomplete-wrap {
     border: 1px solid #efefef;
     border-radius: 2px;
@@ -355,7 +358,26 @@ md-fab-speed-dial.md-fab-bottom-right {
 }
 
 .shadow {
-    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.2), 
+    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.2),
     3px 3px 3px 3px rgba(0, 0, 0, 0.14),
-     0px 2px 1px 4px rgba(0, 0, 0, 0.12)
+    0px 2px 1px 4px rgba(0, 0, 0, 0.12)
 }
+
+md-icon.big {
+    font-size: 48px;
+    height: 50px;
+    width: 50px;
+}
+
+md-list-item.md-no-proxy, md-list-item .md-no-style,
+md-list-item._md-button-wrap > div.md-button:first-child > .md-button:first-child {
+    margin: 0px 50px 0px 5px;
+}
+
+md-list-item._md-button-wrap {
+    margin: 10px 0 10px 0;
+}
+
+/*::-webkit-scrollbar {*/
+    /*display: none;*/
+/*}*/
