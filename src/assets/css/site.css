@@ -258,8 +258,12 @@ a {
     display: inline-flex;
 }
 
+.upload-post-header {
+    background: #ed4956;
+}
+
 .post-upload-content {
-    height: 50vh;
+    height: 470px;
     background: rgb(240, 241, 241);
 }
 
@@ -378,6 +382,17 @@ md-list-item._md-button-wrap {
     margin: 10px 0 10px 0;
 }
 
-/*::-webkit-scrollbar {*/
-    /*display: none;*/
-/*}*/
+md-dialog .md-actions, md-dialog md-dialog-actions {
+    padding: 0px !important;
+    min-height: 0px !important;
+}
+
+md-dialog md-dialog-actions .md-button {
+    margin: 0px !important;
+}
+
+.md-button.md-submit {
+    height: 50px !important;
+    margin: 0px !important;
+    margin: 0px !important;
+}

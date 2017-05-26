@@ -1,61 +1,61 @@
-<md-dialog flex="50">
-    <md-toolbar layout="row" layout-align="center center">
-        <div class="md-toolbar-tools" layout="row" layout-align="space-between center">
-            <div>
-                <md-button class="md-icon-button" ng-click="vm.cancel()">
-                    <md-icon aria-label="Close">arrow_back</md-icon>
-                </md-button>
-                <span>Create post</span>
+<md-dialog style="width: 590px;">
+    <md-dialog-content class="post-upload-content" layout="row" layout-align="center center"
+                       ng-if="!vm.post.attachments || vm.post.attachments.length === 0">
+        <div layout="row" layout-align="center center">
+            <div class="box" layout="column" layout-align="center center">
+                <md-icon class="big">cloud_upload</md-icon>
+                <span>Drag an image here or
+                    <a class="md-primary" ngf-select="vm.upload($file)"
+                       ngf-pattern="'image/*'"
+                       ngf-accept="'image/*'" ngf-max-size="20MB">browse</a> for image for upload.</span>
             </div>
-            <md-button class="md-raised md-primary" ng-click="vm.continue()">continue</md-button>
         </div>
-    </md-toolbar>
-    <!--<md-dialog-content class="post-upload-content" layout="column" layout-align="center center">-->
-    <!--<div class="box" layout="column" layout-align="center center" md-whiteframe="1">-->
-    <!--<md-icon class="big">cloud_upload</md-icon>-->
-    <!--<div class="f-modal-alert" ng-show="vm.upload.success">-->
-    <!--<div class="f-modal-icon f-modal-success animate">-->
-    <!--<span class="f-modal-line f-modal-tip animateSuccessTip"></span>-->
-    <!--<span class="f-modal-line f-modal-long animateSuccessLong"></span>-->
-    <!--<div class="f-modal-placeholder"></div>-->
-    <!--<div class="f-modal-fix"></div>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--<span>Drag an image here or <a class="md-primary" ng-click="vm.browse()">browse</a> for image for upload.</span>-->
-    <!--</div>-->
-    <!--</md-dialog-content>-->
-    <md-dialog-content class="post-upload-content" layout="row" layout-align="space-between start" style="overflow-y: hidden;">
-        <div layout="column" layout-align="start start" style="padding: 15px 10px 0 15px; height: 100%; overflow-y: scroll;direction: rtl;">
-            <div ng-repeat="attachment in vm.upload.attachments" ng-click="vm.setCover(attachment)" style="width: 125px; height: 125px; margin-bottom: 15px; outline: none;" md-whiteframe="3">
+    </md-dialog-content>
+    <md-dialog-content class="post-upload-content" layout="row" layout-align="space-between start"
+                       ng-if="vm.post.attachments.length > 0">
+        <div layout="column" layout-align="start start"
+             style="padding: 15px 10px 0 50px; height: 100%; overflow-y: scroll;direction: rtl;">
+            <div ng-repeat="attachment in vm.post.attachments" ng-click="vm.setCover(attachment)"
+                 style="width: 125px; height: 125px; margin-bottom: 15px; outline: none;" md-whiteframe="3">
                 <img
                     ng-src="{{attachment.uri}}"
                     alt="img" style="width: 125px; height: 125px; object-fit: cover;"/>
             </div>
         </div>
-        <div layout="row" layout-align="center center" style="height: 100%;width: 100%;">
-            <img ng-src="{{vm.preview}}" alt="preview" style="height: calc(100% - 100px);">
-        </div>
-        <!--<md-list style="width: 130px;">-->
-        <!--<md-list-item md-ink-ripple ng-repeat="attachment in vm.upload.attachments" ng-click="vm.setCover(attachment)">-->
-        <!--<img-->
-        <!--ng-src="{{attachment.uri}}"-->
-        <!--alt="img" style="width: 125px; height: 125px; object-fit: cover;" md-whiteframe="3"/>-->
-        <!--</md-list-item>-->
-        <!--</md-list>-->
-        <!--<img ng-src="{{vm.preview}}" style="height: calc(100% - 100px);"/>-->
-    </md-dialog-content>
-    <md-dialog-actions class="md-block">
-        <md-toolbar layout="row" layout-align="end center">
-            <div class="md-toolbar-tools">
-                <md-fab-speed-dial class="md-fab-bottom-right">
-                    <md-fab-trigger>
-                        <md-button class="md-fab" aria-label="upload" ng-click="vm.browse()">
-                            <md-tooltip md-direction="left">Browse</md-tooltip>
-                            <md-icon>add</md-icon>
-                        </md-button>
-                    </md-fab-trigger>
-                </md-fab-speed-dial>
+        <div layout="column" layout-align="start start" style="height: 100%; width: 100%;padding: 15px 0px 0px 10px;">
+            <img ng-src="{{vm.preview}}" alt="preview" style="width: 400px;"
+                 md-whiteframe="1">
+            <div class="md-block md-padding top" layout="row" layout-align="space-between center">
+                <md-checkbox>Set as cover</md-checkbox>
             </div>
-        </md-toolbar>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="column">
+        <md-input-container class="light-container md-no-spacer" md-no-float>
+            <input class="md-input-light" type="text" placeholder="Edit caption">
+        </md-input-container>
+        <md-button class="md-raised md-warn md-submit md-block">Create post</md-button>
     </md-dialog-actions>
+    <!--<md-dialog-actions class="md-block">-->
+    <!--<div layout="row" layout-align="start center">-->
+    <!--<div layout="column">-->
+    <!--<div layout="row">-->
+    <!--<md-input-container class="light-container md-no-spacer" md-no-float>-->
+    <!--<input class="md-input-light" type="text" placeholder="Edit caption">-->
+    <!--</md-input-container>-->
+    <!--<md-fab-speed-dial class="md-fab-bottom-right">-->
+    <!--<md-fab-trigger>-->
+    <!--<md-button class="md-fab" aria-label="upload" ngf-select="vm.upload($file)"-->
+    <!--ngf-pattern="'image/*'"-->
+    <!--ngf-accept="'image/*'" ngf-max-size="20MB">-->
+    <!--<md-tooltip md-direction="left">Browse</md-tooltip>-->
+    <!--<md-icon>add</md-icon>-->
+    <!--</md-button>-->
+    <!--</md-fab-trigger>-->
+    <!--</md-fab-speed-dial>-->
+    <!--</div>-->
+    <!--<md-button class="md-raised md-warn md-block">Create post</md-button>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</md-dialog-actions>-->
 </md-dialog>
