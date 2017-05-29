@@ -4,23 +4,24 @@
     angular.module('photocloud')
         .controller('CreatePostController', CreatePostController);
 
-    CreatePostController.$inject = ['Upload', 'environment'];
+    CreatePostController.$inject = ['Upload', 'environment', 'postService'];
 
-    function CreatePostController($upload, environment) {
+    function CreatePostController($upload, environment, postService) {
         var vm = this;
+
         vm.post = {
-            attahcments: [],
+            attachments: [],
             attachmentIds: [],
             caption: '',
             success: false
         };
 
-        vm.setCover = function (attachment) {
-            vm.preview = attachment.uri;
+        vm.setPreview = function (attachment) {
+            vm.post.preview = attachment.uri;
         };
 
         vm.upload = function (attachment) {
-            vm.upload = {};
+            vm.isUploading = true;
 
             $upload.upload({
                 url: environment.requestUri + 'attachments',
@@ -32,8 +33,13 @@
                     vm.upload.progress = Math.round((e.loaded * 100.0) / e.total);
                 })
                 .success(function (data, status, headers, config) {
-                    vm.upload.isUploading = false;
+                    vm.isUploading = false;
+
                     vm.post.attachments.push(data);
+                    if (vm.post.attachments.length === 1) {
+                        vm.post.preview = data.uri;
+                    }
+
                     vm.post.attachmentIds = vm.post.attachments.map(function (attachment) {
                         return attachment.id;
                     });
@@ -42,27 +48,21 @@
                     vm.isUploading = false;
                 });
         };
+
+        vm.createPost = function () {
+            postService.createPost(vm.post)
+                .then(function (response) {
+                    console.log('success');
+                    console.log(response);
+                }, function (error) {
+                    console.log('ERROR');
+                    console.log(error);
+                });
+        };
+
+        vm.$onInit = function () {
+            console.log('create post attachments');
+            console.log(vm.post.attachments);
+        };
     }
 })(angular);
-
-// var attachments =
-//     {
-//         attachments: [
-//             {
-//                 uri: 'https://scontent-fra3-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/c0.134.1080.1080/14033417_178894212519808_1675329581_n.jpg',
-//                 isCover: false
-//             },
-//             {
-//                 uri: 'https://scontent-fra3-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/14271989_1774841219441905_279848895_n.jpg',
-//                 isCover: false
-//             },
-//             {
-//                 uri: 'https://scontent-fra3-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/18013390_1327946023951549_1021647375392833536_n.jpg',
-//                 isCover: false
-//             },
-//             {
-//                 uri: 'https://scontent-fra3-1.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/c0.135.1080.1080/10724727_438400359617822_497060306_n.jpg',
-//                 isCover: true
-//             }
-//         ]
-//     };

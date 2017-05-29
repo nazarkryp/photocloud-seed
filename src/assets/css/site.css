@@ -138,6 +138,10 @@ a {
     text-decoration: none;
 }
 
+a.md-primary {
+    cursor: pointer;
+}
+
 /*a:visited {
     color: rgb(33, 150, 243);
 }*/
@@ -210,6 +214,11 @@ a {
     padding: 1px 6px 0px 6px !important;
 }
 
+.md-button.box {
+    padding: 35px !important;
+    margin: 0px !important;
+}
+
 .post {
     width: 50%;
     max-width: 600px;
@@ -258,13 +267,18 @@ a {
     display: inline-flex;
 }
 
+.upload-post-dialog {
+    width: 590px;
+}
+
 .upload-post-header {
     background: #ed4956;
 }
 
 .post-upload-content {
-    height: 470px;
+    height: 570px;
     background: rgb(240, 241, 241);
+    overflow-y: hidden;
 }
 
 .md-subhead {
@@ -302,7 +316,7 @@ md-input-container.light-container {
 
 md-input-container:not(.md-input-invalid).md-input-focused .md-input.md-input-light {
     border: none;
-    padding: 0px 2px 0px 2px;
+    padding: 1px 2px 0px 2px;
 }
 
 md-input-container.md-default-theme .md-input,
@@ -395,4 +409,44 @@ md-dialog md-dialog-actions .md-button {
     height: 50px !important;
     margin: 0px !important;
     margin: 0px !important;
+}
+
+.md-attachment-button {
+    width: 100%;
+    height: 100%;
+    background: white;
+    margin: 0px !important;
+}
+
+.md-attachment-thumbnail-container {
+    width: 125px;
+    height: 125px;
+    margin-bottom: 15px;
+    outline: none;
+}
+
+.md-attachment-thumbnail {
+    width: 125px;
+    height: 125px;
+    object-fit: cover;
+}
+
+.md-attachment-list {
+    padding: 15px 10px 0 50px;
+    height: 100%;
+    overflow-y: scroll;
+    direction: rtl;
+}
+
+.md-attachment-preview-thumbnail {
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+}
+
+.md-attachment-preview-container {
+    height: 100%;
+    width: 100%;
+    padding: 15px 5px 0px 0px;
+    overflow-y: scroll;
 }

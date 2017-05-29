@@ -37,7 +37,14 @@
             postService.getPosts()
                 .then(function (response) {
                     vm.data.pagination = response.pagination;
+                    angular.forEach(response.data, function (post) {
+                        if (!post.user.pictureUri) {
+                            post.user.pictureUri = 'assets/images/user.png';
+                        }
+                    });
+
                     vm.data.posts = response.data;
+
                     vm.data.hasMoreItems = response.hasMoreItems;
 
                     vm.isLoading = false;

@@ -1,4 +1,4 @@
-(function () {
+(function (angular) {
     'use strict';
 
     angular.module('photocloud')
@@ -69,4 +69,4 @@
             return deferred.promise;
         };
     }
-})();
+})(angular);
