@@ -17,6 +17,8 @@
             if (session) {
                 var pictureUri = session.pictureUri ? session.pictureUri : 'assets/images/user.png';
 
+                console.log(session);
+                self.currentUser.userId = session.userId;
                 self.currentUser.username = session.userName;
                 self.currentUser.pictureUri = pictureUri;
                 self.currentUser.isActive = session.isActive;
@@ -35,6 +37,7 @@
             session.isActive = session.isActive === 'true';
             session.isPrivate = session.isPrivate === 'true';
 
+            self.currentUser.userId = session.userId;
             self.currentUser.username = session.username;
             self.currentUser.pictureUri = pictureUri;
             self.currentUser.isActive = session.isActive;

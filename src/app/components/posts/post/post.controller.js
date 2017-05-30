@@ -4,9 +4,9 @@
     angular.module('photocloud')
         .controller('PostController', PostController);
 
-    PostController.$inject = ['$state', '$stateParams', 'clipboard', 'logger'];
+    PostController.$inject = ['$state', '$stateParams', 'userProvider', 'clipboard', 'logger'];
 
-    function PostController($state, $stateParams, clipboard, logger) {
+    function PostController($state, $stateParams, userProvider, clipboard, logger) {
         var vm = this;
 
         vm.next = function () {
@@ -39,6 +39,9 @@
 
         vm.$onInit = function () {
             vm.post.activeAttachment = 0;
+            vm.currentUser = userProvider.currentUser;
+            console.log('current user: ');
+            console.log(vm.currentUser);
         };
     }
 })(angular);

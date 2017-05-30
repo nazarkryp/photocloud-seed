@@ -31,6 +31,17 @@
             });
         };
 
+        vm.removePost = function (index) {
+            var post = vm.data.posts[index];
+
+            if (post.id) {
+                postService.remove(post.id).then(
+                    function (response) {
+                        vm.feed.items.splice(index, 1);
+                    });
+            }
+        };
+
         function getPosts() {
             vm.isLoading = true;
 
