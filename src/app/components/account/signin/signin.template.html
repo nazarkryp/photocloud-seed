@@ -10,7 +10,8 @@
         <form name="signInForm" class="box-content" ng-submit="vm.signIn(vm.account)">
             <div class="md-padding">
                 <md-input-container class="md-block" flex>
-                    <input name="username" required type="text" placeholder="Username" ng-model="vm.account.username" aria-label="account">
+                    <input name="username" required type="text" placeholder="Username" ng-model="vm.account.username" aria-label="account"
+                           ng-disabled="vm.isLoading">
                     <div ng-messages="signInForm.username.$error" role="alert">
                         <div ng-message="required">
                             Username must not be empty
@@ -18,7 +19,8 @@
                     </div>
                 </md-input-container>
                 <md-input-container class="md-block" flex>
-                    <input name="password" required minlength="6" type="password" placeholder="Password" ng-model="vm.account.password" aria-label="account">
+                    <input name="password" required minlength="6" type="password" placeholder="Password" ng-model="vm.account.password"
+                           aria-label="account" ng-disabled="vm.isLoading">
                     <div ng-messages="signInForm.password.$error" role="alert">
                         <div ng-message="minlength">
                             Password length should be at least 6 symbols

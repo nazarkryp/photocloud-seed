@@ -22,7 +22,6 @@
 
         function onSuccess(response) {
             vm.data.posts = response.data;
-            console.log(vm.data.posts);
             vm.data.pagination = response.pagination;
             vm.data.hasMoreItems = response.hasMoreItems;
         }

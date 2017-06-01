@@ -56,7 +56,7 @@
         this.remove = function (postId) {
             var deferred = $q.defer();
 
-            httpService.delete('posts/remove/' + postId, deferred);
+            httpService.delete('posts/' + postId, deferred);
 
             return deferred.promise;
         };

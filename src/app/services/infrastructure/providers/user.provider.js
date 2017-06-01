@@ -15,41 +15,44 @@
             var session = sessionStorage.get();
 
             if (session) {
-                var pictureUri = session.pictureUri ? session.pictureUri : 'assets/images/user.png';
-
-                console.log(session);
-                self.currentUser.userId = session.userId;
-                self.currentUser.username = session.userName;
-                self.currentUser.pictureUri = pictureUri;
-                self.currentUser.isActive = session.isActive;
-                self.currentUser.isPrivate = session.isPrivate;
-                self.currentUser.isAuthenticated = true;
+                self.currentUser = setCurrentUser(session);
             } else {
-                self.currentUser = {};
+                self.currentUser = {
+                    isAuthenticated: false
+                };
             }
 
             return self.currentUser;
         };
 
         self.setUser = function (session) {
-            var pictureUri = (session.pictureUri || session.pictureUri.lenth === 0) ? session.pictureUri : 'assets/images/user.png';
-
+            session.userId = parseInt(session.userId);
+            session.pictureUri = (session.pictureUri || session.pictureUri.lenth === 0) ? session.pictureUri : 'assets/images/user.png';
             session.isActive = session.isActive === 'true';
             session.isPrivate = session.isPrivate === 'true';
 
-            self.currentUser.userId = session.userId;
-            self.currentUser.username = session.username;
-            self.currentUser.pictureUri = pictureUri;
-            self.currentUser.isActive = session.isActive;
-            self.currentUser.isPrivate = session.isPrivate;
-            self.currentUser.isAuthenticated = true;
+            setCurrentUser(session);
 
             sessionStorage.save(session);
         };
 
         self.logout = function () {
-            self.currentUser = {};
+            self.currentUser = {
+                isAuthenticated: false
+            };
+
             sessionStorage.clear();
         };
+
+        function setCurrentUser(session) {
+            self.currentUser.userId = session.userId;
+            self.currentUser.username = session.userName;
+            self.currentUser.pictureUri = session.pictureUri;
+            self.currentUser.isActive = session.isActive;
+            self.currentUser.isPrivate = session.isPrivate;
+            self.currentUser.isAuthenticated = true;
+
+            return self.currentUser;
+        }
     }
 })();

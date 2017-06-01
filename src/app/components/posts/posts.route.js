@@ -12,15 +12,15 @@
 
     function getStates() {
         return [{
-                state: 'posts',
-                config: {
-                    url: '/',
-                    templateUrl: 'app/components/posts/posts.template.html',
-                    controller: 'PostsController',
-                    controllerAs: 'vm',
-                    title: 'Home'
-                }
-            },
+            state: 'posts',
+            config: {
+                url: '/',
+                templateUrl: 'app/components/posts/posts.template.html',
+                controller: 'PostsController',
+                controllerAs: 'vm',
+                title: 'Home'
+            }
+        },
             {
                 state: 'userposts',
                 config: {

@@ -11,13 +11,9 @@
 
         vm.userProvider = userProvider;
 
-        $scope.$watch('vm.userProvider.currentUser.isAuthenticated', function (isAuthenticated) {
-            vm.currentUser.isAuthenticated = isAuthenticated;
+        $scope.$watch('vm.userProvider.currentUser', function (currentUser) {
+            vm.currentUser = currentUser;
         });
-
-        vm.$onInit = function () {
-            vm.currentUser = userProvider.getUser();
-        };
 
         vm.logout = function () {
             userProvider.logout();

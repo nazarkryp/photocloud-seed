@@ -40,8 +40,6 @@
         vm.$onInit = function () {
             vm.post.activeAttachment = 0;
             vm.currentUser = userProvider.currentUser;
-            console.log('current user: ');
-            console.log(vm.currentUser);
         };
     }
 })(angular);

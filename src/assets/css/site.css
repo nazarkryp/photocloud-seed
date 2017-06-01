@@ -353,6 +353,10 @@ md-virtual-repeat-container.md-autocomplete-suggestions-container {
     height: 100% !important;
 }
 
+.md-autocomplete-suggestions li {
+    line-height: 0px !important;
+}
+
 #toast-container {
     position: fixed;
     top: 0;
@@ -450,3 +454,4 @@ md-dialog md-dialog-actions .md-button {
     padding: 15px 5px 0px 0px;
     overflow-y: scroll;
 }
+

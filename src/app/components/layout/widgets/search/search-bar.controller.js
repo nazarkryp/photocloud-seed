@@ -19,6 +19,12 @@
             if (searchQuery) {
                 searchBarService.search(searchQuery)
                     .then(function (response) {
+                        angular.forEach(response.data, function (user) {
+                            if (!user.pictureUri) {
+                                user.pictureUri = 'assets/images/user.png';
+                            }
+                        });
+
                         deferred.resolve(response.data);
                     });
             } else {

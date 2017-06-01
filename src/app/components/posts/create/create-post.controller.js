@@ -4,9 +4,9 @@
     angular.module('photocloud')
         .controller('CreatePostController', CreatePostController);
 
-    CreatePostController.$inject = ['Upload', 'environment', 'postService'];
+    CreatePostController.$inject = ['Upload', 'environment', 'postService', '$mdDialog'];
 
-    function CreatePostController($upload, environment, postService) {
+    function CreatePostController($upload, environment, postService, $mdDialog) {
         var vm = this;
 
         vm.post = {
@@ -52,11 +52,7 @@
         vm.createPost = function () {
             postService.createPost(vm.post)
                 .then(function (response) {
-                    console.log('success');
-                    console.log(response);
-                }, function (error) {
-                    console.log('ERROR');
-                    console.log(error);
+                    $mdDialog.hide(response);
                 });
         };
 

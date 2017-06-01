@@ -31,7 +31,7 @@
                         <a class="title" ui-sref="posts">photocloud</a>
                     </div>
                     <div class="col-x2" layout="row" layout-align="center center">
-                        <search-bar class="search-bar" flex></search-bar>
+                        <search-bar class="search-bar" flex ng-if="vm.currentUser.isAuthenticated"></search-bar>
                     </div>
                     <div class="col-x1">
                         <user-bar></user-bar>

@@ -28,8 +28,19 @@
                 parent: angular.element(document.body),
                 targetEvent: event,
                 clickOutsideToClose: true
-            });
+            }).then(onPostCreated, onPostCreateError);
         };
+
+        function onPostCreated(post) {
+            if (!vm.data.posts) {
+                vm.data.posts = [];
+            }
+
+            vm.data.posts.unshift(post);
+        }
+
+        function onPostCreateError() {
+        }
 
         vm.removePost = function (index) {
             var post = vm.data.posts[index];
@@ -37,7 +48,7 @@
             if (post.id) {
                 postService.remove(post.id).then(
                     function (response) {
-                        vm.feed.items.splice(index, 1);
+                        vm.data.posts.splice(index, 1);
                     });
             }
         };
