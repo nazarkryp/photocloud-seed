@@ -2,7 +2,6 @@
     <md-dialog-content class="post-upload-content" layout="column" layout-align="center center"
                        ng-if="vm.post.attachments.length === 0">
         <div layout="column" layout-align="center center">
-            <md-progress-linear md-mode="indeterminate" ng-if="vm.isUploading"></md-progress-linear>
             <md-button class="box" layout="column" layout-align="center center" ngf-select="vm.upload($file)"
                        ngf-pattern="'image/*'"
                        ngf-accept="'image/*'" ngf-max-size="20MB">
@@ -10,17 +9,22 @@
                 <span>Drag an image here or
                     <a class="md-primary">browse</a> for image for upload.</span>
             </md-button>
+            <div class="md-block md-padding" ng-if="vm.isUploading">
+                <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+            </div>
         </div>
     </md-dialog-content>
     <md-dialog-content class="post-upload-content" layout="row" layout-align="space-between start"
                        ng-if="vm.post.attachments.length > 0">
         <div class="md-attachment-list" layout="column" layout-align="start start">
-            <div class="md-attachment-thumbnail-container" ng-repeat="attachment in vm.post.attachments" ng-click="vm.setPreview(attachment)"
+            <div class="md-attachment-thumbnail-container" ng-repeat="attachment in vm.post.attachments"
+                 ng-click="vm.setPreview(attachment)"
                  md-whiteframe="3">
                 <img class="md-attachment-thumbnail" ng-src="{{attachment.uri}}" alt="img"/>
             </div>
             <div class="md-attachment-thumbnail-container" md-whiteframe="3">
-                <md-button class="md-attachment-button" layout="row" layout-align="center center" ngf-select="vm.upload($file)"
+                <md-button class="md-attachment-button" layout="row" layout-align="center center"
+                           ngf-select="vm.upload($file)"
                            ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB">
                     <md-icon>add</md-icon>
                 </md-button>
@@ -30,7 +34,8 @@
             <img class="md-attachment-preview-thumbnail" ng-src="{{vm.post.preview}}" alt="preview" md-whiteframe="1">
             <div class="md-block md-padding top">
                 <md-input-container class="light-container" md-no-float>
-                    <textarea class="md-input-light" type="text" ng-model="vm.post.caption" placeholder="Edit caption"></textarea>
+                    <textarea class="md-input-light" type="text" ng-model="vm.post.caption"
+                              placeholder="Edit caption"></textarea>
                 </md-input-container>
             </div>
         </div>

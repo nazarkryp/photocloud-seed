@@ -16,7 +16,12 @@
         });
 
         vm.$onInit = function () {
-            vm.currentUser = userProvider.getUser();
+            userProvider.getUser()
+                .then(function (user) {
+                    vm.currentUser = user;
+                }, function (error) {
+                    vm.currentUser = userProvider.currentUser;
+                });
         };
 
         vm.date = new Date();

@@ -20,10 +20,6 @@
 
                 accessToken.useRefreshToken = useRefreshToken;
                 accessToken.isValid = expiresIn > 0;
-
-                if (!accessToken.isValid) {
-                    sessionStorage.clear();
-                }
             }
 
             return accessToken;
