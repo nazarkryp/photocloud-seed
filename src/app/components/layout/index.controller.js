@@ -11,18 +11,11 @@
 
         vm.userProvider = userProvider;
 
-        $scope.$watch('vm.userProvider.currentUser.isAuthenticated', function () {
-            vm.currentUser = userProvider.currentUser;
-        });
+        $scope.$watch('vm.userProvider.currentUser', function (currentUser) {
+            vm.currentUser = currentUser;
 
-        vm.$onInit = function () {
-            userProvider.getUser()
-                .then(function (user) {
-                    vm.currentUser = user;
-                }, function (error) {
-                    vm.currentUser = userProvider.currentUser;
-                });
-        };
+            console.log(currentUser);
+        });
 
         vm.date = new Date();
     }

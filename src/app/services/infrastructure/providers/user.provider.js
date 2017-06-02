@@ -4,71 +4,41 @@
     angular.module('photocloud')
         .service('userProvider', userProvider);
 
-    userProvider.$inject = ['sessionStorage', 'tokenProvider', '$http', '$q', 'environment'];
+    userProvider.$inject = ['sessionStorage'];
 
-    function userProvider(sessionStorage, tokenProvider, $http, $q, environment) {
-        var self = this;
-
-        self.currentUser = {};
-
-        self.getUser = function () {
-            var deferred = $q.defer();
-            var accessToken = tokenProvider.getAccessToken();
-
-            if (!accessToken || !accessToken.isValid) {
-                self.logout();
-                deferred.reject();
-
-                return deferred.promise;
-            }
-
-            if (accessToken.useRefreshToken) {
-                var data = 'grant_type=refresh_token&refresh_token=' + accessToken.refreshToken;
-
-                $http.post(environment.requestUri + 'authorize', data)
-                    .then(function (response) {
-                        self.setUser(response);
-                        deferred.resolve(self.currentUser);
-                    }, function (error) {
-                        deferred.reject(error);
-                        self.logout();
-                    });
-            } else {
-                setCurrentUser(accessToken);
-                deferred.resolve(self.currentUser);
-            }
-
-            return deferred.promise;
-        };
-
-        self.setUser = function (session) {
-            session.userId = parseInt(session.userId);
-            session.pictureUri = (session.pictureUri || session.pictureUri.lenth === 0) ? session.pictureUri : 'assets/images/user.png';
+    function userProvider(sessionStorage) {
+        this.setCurrentUser = function (session) {
+            session.userId = parseInt(session.userId, 10);
+            session.pictureUri = (session.pictureUri && session.pictureUri.length !== 0) ? session.pictureUri : 'assets/images/user.png';
             session.isActive = session.isActive === 'true';
             session.isPrivate = session.isPrivate === 'true';
-
-            setCurrentUser(session);
+            session.username = session.userName;
 
             sessionStorage.save(session);
+
+            this.currentUser = getUserFromSession();
         };
 
-        self.logout = function () {
-            self.currentUser = {
-                isAuthenticated: false
-            };
-
+        this.logout = function () {
             sessionStorage.clear();
+
+            this.currentUser = getUserFromSession();
         };
 
-        function setCurrentUser(session) {
-            self.currentUser.userId = session.userId;
-            self.currentUser.username = session.userName;
-            self.currentUser.pictureUri = session.pictureUri;
-            self.currentUser.isActive = session.isActive;
-            self.currentUser.isPrivate = session.isPrivate;
-            self.currentUser.isAuthenticated = true;
+        this.currentUser = getUserFromSession();
 
-            return self.currentUser;
+        function getUserFromSession() {
+            var user = sessionStorage.get();
+
+            if (user) {
+                user.isAuthenticated = true;
+            } else {
+                user = {
+                    isAuthenticated: false
+                };
+            }
+
+            return user;
         }
     }
 })();

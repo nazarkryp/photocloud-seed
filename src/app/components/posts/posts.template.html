@@ -1,5 +1,8 @@
 <div class="content" layout="column" layout-align="start center">
     <post class="post" remove-callback="vm.removePost($index)" ng-repeat="post in vm.data.posts" post="post"></post>
+    <div class="md-padding">
+        <md-button>Load More</md-button>
+    </div>
 </div>
 <md-fab-speed-dial class="md-fab-bottom-right" ng-click="vm.createPost($event)">
     <md-fab-trigger>

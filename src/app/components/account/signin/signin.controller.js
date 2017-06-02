@@ -22,10 +22,9 @@
         function onAuthorizationSuccess(response) {
             vm.isLoading = false;
 
-            userProvider.setUser(response);
-            var currentUser = userProvider.getUser();
+            userProvider.setCurrentUser(response);
 
-            var message = 'Logged in as ' + currentUser.username;
+            var message = 'Logged in as ' + response.username;
             logger.toast(message);
 
             $state.go('posts');
@@ -36,8 +35,6 @@
 
             vm.error = error.data.error;
             logger.toast(error.data.error);
-
-            
         }
     }
 })();

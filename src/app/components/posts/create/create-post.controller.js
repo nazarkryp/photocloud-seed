@@ -52,6 +52,10 @@
         vm.createPost = function () {
             postService.createPost(vm.post)
                 .then(function (response) {
+                    if (!response.user.pictureUri || response.user.pictureUri.length === 0) {
+                        response.user.pictureUri = 'assets/images/user.png';
+                    }
+
                     $mdDialog.hide(response);
                 });
         };

@@ -26,10 +26,16 @@
             vm.data.hasMoreItems = response.hasMoreItems;
         }
 
-        function onError(error) {}
+        function onError(error) {
+        }
 
         vm.$onInit = function () {
             vm.user = user;
+
+            if (!vm.user.pictureUri || vm.user.pictureUri.length === 0) {
+                vm.user.pictureUri = 'assets/images/user.png';
+            }
+
             getUserPosts($stateParams.username);
         };
     }
