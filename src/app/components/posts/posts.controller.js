@@ -20,6 +20,10 @@
 
         vm.isLoading = false;
 
+        vm.loadMore = function () {
+            getPosts();
+        };
+
         vm.createPost = function (event) {
             $mdDialog.show({
                 controller: 'CreatePostController',
@@ -46,9 +50,10 @@
             var post = vm.data.posts[index];
 
             if (post.id) {
+                vm.data.posts.splice(index, 1);
+
                 postService.remove(post.id).then(
                     function (response) {
-                        vm.data.posts.splice(index, 1);
                     });
             }
         };
@@ -56,19 +61,17 @@
         function getPosts() {
             vm.isLoading = true;
 
-            postService.getPosts()
+            postService.getPosts(vm.data.pagination)
                 .then(function (response) {
-                    vm.data.pagination = response.pagination;
                     angular.forEach(response.data, function (post) {
                         if (!post.user.pictureUri) {
                             post.user.pictureUri = 'assets/images/user.png';
                         }
                     });
 
-                    vm.data.posts = response.data;
-
+                    vm.data.posts = vm.data.posts.concat(response.data);
+                    vm.data.pagination = response.pagination;
                     vm.data.hasMoreItems = response.hasMoreItems;
-
                     vm.isLoading = false;
                 }, function (error) {
                     vm.isLoading = false;

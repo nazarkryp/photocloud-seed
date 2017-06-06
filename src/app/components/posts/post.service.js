@@ -7,10 +7,16 @@
     postService.$inject = ['$q', 'httpService'];
 
     function postService($q, httpService) {
-        this.getPosts = function () {
+        this.getPosts = function (pageFilter) {
             var deferred = $q.defer();
 
-            httpService.get('posts', deferred);
+            var requestUri = 'posts';
+
+            if (pageFilter.next) {
+                requestUri = requestUri + '?next=' + pageFilter.next;
+            }
+
+            httpService.get(requestUri, deferred);
 
             return deferred.promise;
         };

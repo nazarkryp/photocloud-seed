@@ -13,8 +13,6 @@
 
         $scope.$watch('vm.userProvider.currentUser', function (currentUser) {
             vm.currentUser = currentUser;
-
-            console.log(currentUser);
         });
 
         vm.date = new Date();
