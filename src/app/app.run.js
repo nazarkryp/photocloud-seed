@@ -13,7 +13,7 @@
             var accessToken = tokenProvider.getAccessToken();
 
             if (accessToken && accessToken.isValid) {
-                if (next.url !== '/settings' && !accessToken.isActive) {
+                if (next.url !== '/account/edit' && !accessToken.isActive) {
                     $state.go('settings', {
                         isRedirected: true
                     });

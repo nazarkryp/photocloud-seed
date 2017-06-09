@@ -1,11 +1,14 @@
 <div class="content" layout="column" layout-align="start center">
-    <div class="user-info-bar" layout="row" layout-align="center center" ng-if="vm.user">
-        <img class="thumbnail-big" ng-src="{{vm.user.pictureUri}}" alt="profile" />
+    <div class="user-info-bar" layout="row" layout-align="center start" ng-if="vm.user">
+        <img class="thumbnail-big" ng-src="{{vm.user.pictureUri}}" alt="profile"/>
         <div class="md-padding" layout="column" layout-align="stretch stretch" flex>
             <div layout="row" layout-align="space-between center">
                 <span class="md-display-1 thin">{{vm.user.username}}</span>
+                <a ui-sref="settings" ng-if="vm.currentUser.userId === vm.user.id">
+                    <md-icon>settings</md-icon>
+                </a>
             </div>
-            <div class="counters" layout="row" layout-align="start center" ng-if="vm.user.isActive">
+            <div class="md-padding top counters" layout="row" layout-align="start center" ng-if="vm.user.isActive">
                 <div flex="20">
                     <span class="md-title">{{vm.user.posts}} </span>
                     <span class="md-subhead">posts </span>
@@ -15,8 +18,8 @@
                     <span class="md-subhead">followers </span>
                 </div>
                 <div flex="20">
-                    <span class="md-title">{{vm.user.follows}} </span>
-                    <span class="md-subhead">follows</span>
+                    <span class="md-title">{{vm.user.following}} </span>
+                    <span class="md-subhead">following</span>
                 </div>
             </div>
             <div layout="row" layout-align="start center" style="margin-top: 15px;">
@@ -25,11 +28,33 @@
             </div>
         </div>
     </div>
-    <div class="container">
-        <md-grid-list class="user-posts" md-cols-gt-md="3" md-row-height-gt-md="1:1">
-            <md-grid-tile class="user-post" ng-repeat="post in vm.data.posts">
-                <img class="thumbnail" ng-src="{{post.attachments[0].uri}}" alt="{{post.attachments[0].uri}}">
-            </md-grid-tile>
-        </md-grid-list>
+    <div class="md-padding" layout="column" layout-align="center center" ng-if="vm.error.data.error.status === 404">
+        <span class="md-headline">Sorry, this page isn't available.</span>
+        <p>The link you followed may be broken, or the page may have been removed. Go back to <a ui-sref="posts">PhotoCloud</a>.</p>
+    </div>
+    <div class="error-box" ng-if="vm.error.display" layout="column" layout-align="center center">
+        <span class="md-subhead">
+            <strong>{{vm.error.title}}</strong>
+        </span>
+        <p ng-if="vm.error.details">{{vm.error.details}}</p>
+    </div>
+    <div class="container" layout="row" layout-align="center start">
+        <div class="wrapper" ng-if="vm.data.posts.length > 0">
+            <div class="post-item" ng-repeat="post in vm.data.posts">
+                <div class="image-container" layout="column" layout-align="center center">
+                    <img class="thumbnail" ng-src="{{post.attachments[0].uri}}" alt="{{post.attachments[0].uri}}">
+                    <div class="after md-padding" layout="row" layout-align="space-between center">
+                        <div layout="row" layout-align="center center">
+                            <md-icon class="post-icon">favorite</md-icon>
+                            <span class="post-number">{{post.likesCount}}</span>
+                        </div>
+                        <div layout="row" layout-align="center center">
+                            <md-icon class="post-icon">mode_comment</md-icon>
+                            <span class="post-number">{{post.commentsCount}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

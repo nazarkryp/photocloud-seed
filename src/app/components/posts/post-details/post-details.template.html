@@ -1,5 +1,5 @@
 <div class="content" layout="column" layout-align="center center">
-    <div class="md-padding">
+    <div class="md-padding" ng-if="vm.post.attachments.length > 0">
         <img ng-src="{{vm.post.attachments[0].uri}}" alt="attachment">
     </div>
     <div class="md-padding" ng-if="vm.error">

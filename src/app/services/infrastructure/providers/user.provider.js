@@ -20,7 +20,7 @@
         };
 
         this.logout = function () {
-            sessionStorage.clear();
+            sessionStorage.clean();
 
             this.currentUser = getUserFromSession();
         };
@@ -31,7 +31,10 @@
             var user = sessionStorage.get();
 
             if (user) {
-                user.isAuthenticated = true;
+                var now = new Date();
+                var tokenExpirationDate = new Date(user['.expires']);
+                var expiresIn = (tokenExpirationDate - now) / 1000 / 60;
+                user.isAuthenticated = expiresIn > 0;
             } else {
                 user = {
                     isAuthenticated: false

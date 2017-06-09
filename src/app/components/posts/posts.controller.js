@@ -20,10 +20,6 @@
 
         vm.isLoading = false;
 
-        vm.loadMore = function () {
-            getPosts();
-        };
-
         vm.createPost = function (event) {
             $mdDialog.show({
                 controller: 'CreatePostController',
@@ -58,7 +54,7 @@
             }
         };
 
-        function getPosts() {
+        vm.getPosts = function () {
             vm.isLoading = true;
 
             postService.getPosts(vm.data.pagination)
@@ -69,17 +65,20 @@
                         }
                     });
 
-                    vm.data.posts = vm.data.posts.concat(response.data);
+                    if (response.data) {
+                        vm.data.posts = vm.data.posts.concat(response.data);
+                    }
+
                     vm.data.pagination = response.pagination;
                     vm.data.hasMoreItems = response.hasMoreItems;
                     vm.isLoading = false;
                 }, function (error) {
                     vm.isLoading = false;
                 });
-        }
+        };
 
         vm.$onInit = function () {
-            getPosts();
+            vm.getPosts();
         };
     }
 })();

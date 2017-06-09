@@ -38,7 +38,10 @@
         };
 
         vm.$onInit = function () {
-            vm.post.activeAttachment = 0;
+            if (vm.post && vm.post.attachments.length > 0) {
+                vm.post.activeAttachment = 0;
+            }
+
             vm.currentUser = userProvider.currentUser;
         };
     }

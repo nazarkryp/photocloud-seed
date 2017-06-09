@@ -23,14 +23,14 @@
             return angular.fromJson(json);
         };
 
-        self.clear = function () {
+        self.clean = function () {
             $cookies.remove(self.key);
         };
 
         return {
             save: self.save,
             get: self.get,
-            clear: self.clear
+            clean: self.clean
         };
     }
 })();

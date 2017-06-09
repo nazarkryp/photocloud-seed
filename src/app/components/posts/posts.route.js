@@ -28,12 +28,7 @@
                     templateUrl: 'app/components/posts/user-posts/user-posts.template.html',
                     controller: 'UserPostsController',
                     controllerAs: 'vm',
-                    title: 'User',
-                    resolve: {
-                        user: ['$stateParams', 'userService', function ($stateParams, userService) {
-                            return userService.getUser($stateParams.username);
-                        }]
-                    }
+                    title: 'User'
                 }
             },
             {

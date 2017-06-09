@@ -25,9 +25,8 @@
         }
 
         vm.$onInit = function () {
-            var postId = $stateParams.postId;
-            console.log(postId);
-            getPost(postId);
+            console.log($stateParams.postId);
+            getPost($stateParams.postId);
         };
     }
 })(angular);
