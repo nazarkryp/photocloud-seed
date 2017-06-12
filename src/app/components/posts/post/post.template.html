@@ -1,6 +1,7 @@
 <div class="md-ink-ripple" md-whiteframe="1">
     <div class="post-header" layout="row" flex>
-        <img class="thumbnail-small" ng-src="{{vm.post.user.pictureUri}}" alt="profile">
+        <img class="thumbnail-small" alternative-user-image ui-sref="userposts({username: vm.post.user.username})"
+             ng-src="{{vm.post.user.pictureUri}}" alt="profile">
         <div class="md-padding left" layout="row" layout-align="space-between center" flex>
             <a class="md-body-2" ui-sref="userposts({username: vm.post.user.username})">{{vm.post.user.username}}</a>
             <md-menu md-position-mode="target-right target">
@@ -10,18 +11,22 @@
                 <md-menu-content width="4">
                     <md-menu-item>
                         <md-button>
-                            <md-icon>edit</md-icon>Edit</md-button>
+                            <md-icon>edit</md-icon>
+                            Edit
+                        </md-button>
                     </md-menu-item>
                     <md-menu-item>
                         <md-button ng-click="vm.removeCallback()" ng-if="vm.post.user.id === vm.currentUser.userId">
-                            <md-icon>close</md-icon>Remove</md-button>
+                            <md-icon>close</md-icon>
+                            Remove
+                        </md-button>
                     </md-menu-item>
                 </md-menu-content>
             </md-menu>
         </div>
     </div>
     <div class="post-content" md-ink-ripple>
-        <div class="post-content-buttons" layout="row" layout-align="space-between center">
+        <div class="post-content-buttons" layout="row" layout-align="space-between center" ng-if="vm.post.attachments.length > 1">
             <md-button class="md-icon-button" ng-click="vm.previous()">
                 <md-icon>chevron_left</md-icon>
             </md-button>

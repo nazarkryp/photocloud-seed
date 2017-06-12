@@ -12,7 +12,7 @@
 
             var requestUri = 'posts';
 
-            if (pageFilter.next) {
+            if (pageFilter && pageFilter.next) {
                 requestUri = requestUri + '?next=' + pageFilter.next;
             }
 
@@ -37,13 +37,13 @@
             return deferred.promise;
         };
 
-        this.getUserPosts = function (username, pagination) {
+        this.getUserPosts = function (username, pageFilter) {
             var deferred = $q.defer();
 
             var requestUri = 'posts/users/' + username;
 
-            if (pagination) {
-                requestUri = requestUri + '?next=' + pagination.next;
+            if (pageFilter && pageFilter.next) {
+                requestUri = requestUri + '?next=' + pageFilter.next;
             }
 
             httpService.get(requestUri, deferred);

@@ -1,7 +1,13 @@
 <div class="content" layout="column" layout-align="start center">
     <post class="post" remove-callback="vm.removePost($index)" ng-repeat="post in vm.data.posts" post="post"></post>
     <div class="md-padding" ng-if="vm.data.hasMoreItems">
-        <md-button ng-click="vm.getPosts()">Load More</md-button>
+        <md-button class="md-fab" ng-click="vm.getPosts()" ng-if="!vm.isLoading">
+            <md-tooltip md-direction="left">Load more posts</md-tooltip>
+            <md-icon>expand_more</md-icon>
+        </md-button>
+        <div class="md-circle-container" ng-if="vm.isLoading">
+            <md-progress-circular class="md-accent" md-mode="indeterminate" md-diameter="40"></md-progress-circular>
+        </div>
     </div>
 </div>
 <md-fab-speed-dial class="md-fab-bottom-right" ng-click="vm.createPost($event)">

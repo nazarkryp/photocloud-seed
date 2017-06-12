@@ -1,13 +1,15 @@
-(function () {
+(function (angular) {
     'use strict';
 
     angular.module('photocloud')
-        .controller('PostsController', PostsController);
+        .controller('FeedController', FeedController);
 
-    PostsController.$inject = ['postService', '$mdDialog'];
+    FeedController.$inject = ['postService', '$mdDialog'];
 
-    function PostsController(postService, $mdDialog) {
+    function FeedController(postService, $mdDialog) {
         var vm = this;
+
+        vm.isLoading = false;
 
         vm.data = {
             pagination: {
@@ -17,8 +19,6 @@
             posts: [],
             hasMoreItems: false
         };
-
-        vm.isLoading = false;
 
         vm.createPost = function (event) {
             $mdDialog.show({
@@ -59,12 +59,6 @@
 
             postService.getPosts(vm.data.pagination)
                 .then(function (response) {
-                    angular.forEach(response.data, function (post) {
-                        if (!post.user.pictureUri) {
-                            post.user.pictureUri = 'assets/images/user.png';
-                        }
-                    });
-
                     if (response.data) {
                         vm.data.posts = vm.data.posts.concat(response.data);
                     }
@@ -81,4 +75,4 @@
             vm.getPosts();
         };
     }
-})();
+})(angular);

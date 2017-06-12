@@ -16,7 +16,7 @@
             config: {
                 url: '/account/edit',
                 templateUrl: 'app/components/settings/settings.template.html',
-                controller: 'PostsController',
+                controller: 'SettingsController',
                 controllerAs: 'vm',
                 title: 'Settings'
             }

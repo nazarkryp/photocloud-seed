@@ -1,6 +1,6 @@
 <div class="content" layout="column" layout-align="start center">
-    <div class="user-info-bar" layout="row" layout-align="center start" ng-if="vm.user">
-        <img class="thumbnail-big" ng-src="{{vm.user.pictureUri}}" alt="profile"/>
+    <div class="user-info" layout="row" layout-align="center start" ng-if="vm.loaded">
+        <img class="thumbnail-big" alternative-user-image ng-src="{{vm.user.pictureUri}}" alt="profile" md-whiteframe="3"/>
         <div class="md-padding" layout="column" layout-align="stretch stretch" flex>
             <div layout="row" layout-align="space-between center">
                 <span class="md-display-1 thin">{{vm.user.username}}</span>
@@ -22,26 +22,19 @@
                     <span class="md-subhead">following</span>
                 </div>
             </div>
-            <div layout="row" layout-align="start center" style="margin-top: 15px;">
+            <div class="md-padding top" layout="row" layout-align="start center">
                 <span class="md-subhead" style="font-size: 17px;font-weight: bold;padding-right: 10px;">{{vm.user.fullName}}</span>
                 <span class="md-subhead" style="font-size: 17px;font-weight: normal;padding-right: 10px;">{{vm.user.bio}}</span>
             </div>
         </div>
     </div>
-    <div class="md-padding" layout="column" layout-align="center center" ng-if="vm.error.data.error.status === 404">
-        <span class="md-headline">Sorry, this page isn't available.</span>
-        <p>The link you followed may be broken, or the page may have been removed. Go back to <a ui-sref="posts">PhotoCloud</a>.</p>
+    <div class="container" layout="row" layout-align="center center" ng-if="vm.error" flex>
+        <error-box error="vm.error"></error-box>
     </div>
-    <div class="error-box" ng-if="vm.error.display" layout="column" layout-align="center center">
-        <span class="md-subhead">
-            <strong>{{vm.error.title}}</strong>
-        </span>
-        <p ng-if="vm.error.details">{{vm.error.details}}</p>
-    </div>
-    <div class="container" layout="row" layout-align="center start">
-        <div class="wrapper" ng-if="vm.data.posts.length > 0">
+    <div class="container" layout="column" layout-align="start center" ng-if="!vm.error">
+        <div class="user-posts">
             <div class="post-item" ng-repeat="post in vm.data.posts">
-                <div class="image-container" layout="column" layout-align="center center">
+                <div class="image-container" layout="column" layout-align="center center" md-whiteframe="3">
                     <img class="thumbnail" ng-src="{{post.attachments[0].uri}}" alt="{{post.attachments[0].uri}}">
                     <div class="after md-padding" layout="row" layout-align="space-between center">
                         <div layout="row" layout-align="center center">
@@ -54,6 +47,15 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div ng-if="vm.data.hasMoreItems">
+            <md-button class="md-fab" ng-click="vm.getPosts()" ng-if="!vm.isLoading">
+                <md-tooltip md-direction="left">Load more posts</md-tooltip>
+                <md-icon>expand_more</md-icon>
+            </md-button>
+            <div class="md-circle-container" ng-if="vm.isLoading">
+                <md-progress-circular class="md-accent" md-mode="indeterminate" md-diameter="40"></md-progress-circular>
             </div>
         </div>
     </div>

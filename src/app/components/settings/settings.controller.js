@@ -4,8 +4,22 @@
     angular.module('photocloud')
         .controller('SettingsController', SettingsController);
 
-    SettingsController.$inject = [];
+    SettingsController.$inject = ['settingsService'];
 
-    function SettingsController() {
+    function SettingsController(settingsService) {
+        var vm = this;
+
+        function getAccount() {
+            settingsService.getAccount()
+                .then(function (response) {
+                    vm.settings = response;
+                }, function (error) {
+
+                });
+        }
+
+        vm.$onInit = function () {
+            getAccount();
+        };
     }
 })(angular);

@@ -8,64 +8,77 @@
 
     function UserPostsController($state, $stateParams, postService, userService, userProvider) {
         var vm = this;
-        vm.user = null;
 
         vm.data = {
+            pagination: {
+                next: null,
+                previous: null
+            },
             posts: [],
-            hasMoreItems: false,
-            pagination: null
+            hasMoreItems: false
         };
 
-        vm.error = {
-            title: '',
-            details: '',
-            display: false
-        };
+        vm.getPosts = function () {
+            vm.isLoading = true;
 
-        function getUserPosts(username) {
-            postService.getUserPosts(username)
-                .then(onSuccess, onError);
-        }
+            postService.getUserPosts($stateParams.username, vm.data.pagination)
+                .then(function (response) {
+                    if (response.data) {
+                        vm.data.posts = vm.data.posts.concat(response.data);
+                    }
 
-        function onSuccess(response) {
-            vm.data.posts = response.data;
-            vm.data.pagination = response.pagination;
-            vm.data.hasMoreItems = response.hasMoreItems;
-        }
-
-        function onError(error) {
-            vm.error.title = error.data.error.message;
-            vm.error.display = true;
-
-            if (!userProvider.currentUser.isAuthenticated) {
-                vm.error.details = 'Already follow ' + vm.user.username + '? Log in to see their photos and videos.';
-            } else {
-                vm.error.details = 'Follow ' + vm.user.username + ' to see their photos and videos.';
-            }
+                    vm.data.pagination = response.pagination;
+                    vm.data.hasMoreItems = response.hasMoreItems;
+                    vm.isLoading = false;
+                }, function () {
+                    vm.isLoading = false;
+                });
         }
 
         function getUser(username) {
-            userService.getUser(username)
+            return userService.getUser(username)
                 .then(function (response) {
                     vm.user = response;
 
-                    if (!vm.user.pictureUri || vm.user.pictureUri.length === 0) {
-                        vm.user.pictureUri = 'assets/images/user.png';
-                    }
-
-                    if (vm.user.isActive) {
-                        getUserPosts($stateParams.username);
+                    if (vm.user.id === vm.currentUser.userId || !vm.user.isPrivate || (vm.user.isPrivate && vm.user.outgoingStatus === 'Following')) {
+                        vm.getPosts();
+                    } else if (vm.user.outgoingStatus === 'Requested') {
+                        vm.error = {
+                            title: 'This account is private',
+                            details: 'Please wait until ' + vm.user.username + ' accepts your request'
+                        };
                     } else {
-                        vm.error.title = 'Account has been deactivated';
-                        vm.error.display = true;
+                        vm.error = {
+                            title: 'This account is private'
+                        };
+
+                        if (userProvider.currentUser.isAuthenticated) {
+                            vm.error.details = 'Follow ' + vm.user.username + ' to see all their photos.';
+                        } else {
+                            vm.error.details = 'Already follow ' + vm.user.username + '? Log in to see their photos and videos.';
+                        }
+                    }
+                }, function (error) {
+                    if (error.status === 403) {
+                        vm.error = {
+                            title: 'Account has been deactivated'
+                        };
+                    } else if (error.status === 404) {
+                        $state.go('404');
                     }
                 });
         }
 
         vm.$onInit = function () {
             vm.currentUser = userProvider.currentUser;
+            vm.user = {
+                username: $stateParams.username
+            };
 
-            getUser($stateParams.username);
+            getUser($stateParams.username)
+                .then(function () {
+                    vm.loaded = true;
+                });
         };
     }
 })(angular);

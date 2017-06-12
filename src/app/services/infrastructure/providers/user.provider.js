@@ -9,7 +9,6 @@
     function userProvider(sessionStorage) {
         this.setCurrentUser = function (session) {
             session.userId = parseInt(session.userId, 10);
-            session.pictureUri = (session.pictureUri && session.pictureUri.length !== 0) ? session.pictureUri : 'assets/images/user.png';
             session.isActive = session.isActive === 'true';
             session.isPrivate = session.isPrivate === 'true';
             session.username = session.userName;
