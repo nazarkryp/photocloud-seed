@@ -14,5 +14,13 @@
 
             return deferred.promise;
         };
+
+        this.setAccountProfilePicture = function (attachment) {
+            var deferred = $q.defer();
+
+            httpService.post('account/attachment', attachment, deferred);
+
+            return deferred.promise;
+        };
     }
 })(angular);
