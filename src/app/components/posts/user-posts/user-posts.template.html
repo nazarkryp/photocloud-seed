@@ -3,7 +3,7 @@
         <img class="thumbnail-big" alternative-user-image ng-src="{{vm.user.pictureUri}}" alt="profile" md-whiteframe="3"/>
         <div class="md-padding" layout="column" layout-align="stretch stretch" flex>
             <div layout="row" layout-align="space-between center">
-                <span class="md-display-1 thin">{{vm.user.username}}</span>
+                <span class="md-display-1">{{vm.user.username}}</span>
                 <a ui-sref="settings" ng-if="vm.currentUser.userId === vm.user.id">
                     <md-icon>settings</md-icon>
                 </a>

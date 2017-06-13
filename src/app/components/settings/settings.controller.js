@@ -22,17 +22,18 @@
                 });
         }
 
-        vm.changePassword = function () {};
+        vm.changePassword = function () {
+        };
 
         vm.updateProfilePicture = function (attachment) {
             vm.isUploading = true;
 
             $upload.upload({
-                    url: environment.requestUri + 'attachments',
-                    data: {
-                        file: attachment
-                    }
-                })
+                url: environment.requestUri + 'attachments',
+                data: {
+                    file: attachment
+                }
+            })
                 .progress(function (e) {
                     vm.progress = Math.round((e.loaded * 100.0) / e.total);
                 })
@@ -57,7 +58,12 @@
                     vm.isUploading = false;
                 });
 
-            function onProfilePictureChanged(response) {}
+            function onProfilePictureChanged(response) {
+            }
+        };
+
+        vm.invertAccountStatus = function () {
+
         };
 
         vm.$onInit = function () {

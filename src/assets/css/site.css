@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
+
 html {
     overflow-y: scroll;
 }
@@ -92,7 +93,8 @@ h2 {
     font-size: 24px;
 }
 
-.thin {
+.md-display-1,
+.md-headline {
     font-weight: lighter;
 }
 
@@ -131,11 +133,14 @@ h2 {
     padding: 35px;
 }
 
-.box-header {}
+.box-header {
+}
 
-.box-content {}
+.box-content {
+}
 
-.box-footer {}
+.box-footer {
+}
 
 a {
     text-decoration: none;
@@ -144,7 +149,6 @@ a {
 a.md-primary {
     cursor: pointer;
 }
-
 
 /*a:visited {
     color: rgb(33, 150, 243);
@@ -332,7 +336,6 @@ a.md-body-2 {
     color: #444444;
 }
 
-
 /*md-autocomplete-wrap {
     border: 1px solid #efefef;
     border-radius: 2px;
@@ -388,7 +391,7 @@ md-icon.big {
 
 md-list-item.md-no-proxy,
 md-list-item .md-no-style,
-md-list-item._md-button-wrap>div.md-button:first-child>.md-button:first-child {
+md-list-item._md-button-wrap > div.md-button:first-child > .md-button:first-child {
     margin: 0px 50px 0px 5px;
 }
 
@@ -504,15 +507,11 @@ md-dialog md-dialog-actions .md-button {
 }
 
 .page-content {
-    padding: 25px 25px 25px 25px;
+    padding: 0px 0px 0px 0px;
     background-color: white;
-    max-width: 1000px;
+    border: 1px solid #e0e0e0;
     width: 100%;
-    min-width: 750px;
-}
-
-.page-content-header {
-    height: 40px;
+    max-width: 1000px;
 }
 
 .row {
