@@ -12,11 +12,13 @@
         vm.account = {};
 
         function getAccount() {
+            vm.isLoading = true;
             settingsService.getAccount()
                 .then(function (response) {
-                    vm.settings = response;
+                    vm.account = response;
+                    vm.isLoading = false;
                 }, function (error) {
-
+                    vm.isLoading = false;
                 });
         }
 
@@ -32,23 +34,23 @@
                     }
                 })
                 .progress(function (e) {
-                    vm.upload.progress = Math.round((e.loaded * 100.0) / e.total);
+                    vm.progress = Math.round((e.loaded * 100.0) / e.total);
                 })
                 .success(function (data, status, headers, config) {
-                    vm.isUploading = false;
-
-                    vm.account.pictureId = data.pictureId;
-                    vm.account.pictureUri = data.pictureUri;
+                    vm.account.pictureId = data.id;
+                    vm.account.pictureUri = data.uri;
 
                     var attachment = {
-                        attachmentId: data.pictureId
+                        attachmentId: data.id
                     };
 
                     settingsService.setAccountProfilePicture(attachment)
                         .then(function (response) {
-                            vm.account.pictureId = data.pictureId;
-                            vm.account.pictureUri = data.pictureUri;
+                            vm.account.pictureId = data.id;
+                            vm.account.pictureUri = data.uri;
+                            vm.isUploading = false;
                         }, function (error) {
+                            vm.isUploading = false;
                         });
                 })
                 .error(function (data, status, headers, config) {

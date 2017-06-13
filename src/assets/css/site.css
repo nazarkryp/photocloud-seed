@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
-
 html {
     overflow-y: scroll;
 }
@@ -132,14 +131,11 @@ h2 {
     padding: 35px;
 }
 
-.box-header {
-}
+.box-header {}
 
-.box-content {
-}
+.box-content {}
 
-.box-footer {
-}
+.box-footer {}
 
 a {
     text-decoration: none;
@@ -148,6 +144,7 @@ a {
 a.md-primary {
     cursor: pointer;
 }
+
 
 /*a:visited {
     color: rgb(33, 150, 243);
@@ -335,6 +332,7 @@ a.md-body-2 {
     color: #444444;
 }
 
+
 /*md-autocomplete-wrap {
     border: 1px solid #efefef;
     border-radius: 2px;
@@ -379,9 +377,7 @@ md-fab-speed-dial.md-fab-bottom-right {
 }
 
 .shadow {
-    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.2),
-    3px 3px 3px 3px rgba(0, 0, 0, 0.14),
-    0px 2px 1px 4px rgba(0, 0, 0, 0.12)
+    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.2), 3px 3px 3px 3px rgba(0, 0, 0, 0.14), 0px 2px 1px 4px rgba(0, 0, 0, 0.12)
 }
 
 md-icon.big {
@@ -390,8 +386,9 @@ md-icon.big {
     width: 50px;
 }
 
-md-list-item.md-no-proxy, md-list-item .md-no-style,
-md-list-item._md-button-wrap > div.md-button:first-child > .md-button:first-child {
+md-list-item.md-no-proxy,
+md-list-item .md-no-style,
+md-list-item._md-button-wrap>div.md-button:first-child>.md-button:first-child {
     margin: 0px 50px 0px 5px;
 }
 
@@ -399,7 +396,8 @@ md-list-item._md-button-wrap {
     margin: 10px 0 10px 0;
 }
 
-md-dialog .md-actions, md-dialog md-dialog-actions {
+md-dialog .md-actions,
+md-dialog md-dialog-actions {
     padding: 0px !important;
     min-height: 0px !important;
 }
@@ -519,4 +517,12 @@ md-dialog md-dialog-actions .md-button {
 
 .row {
     margin: 25px 0px 25px 0px;
+}
+
+.post-badge {
+    color: #d8d8d8;
+}
+
+.active {
+    color: #ed4956;
 }

@@ -1,7 +1,7 @@
 <div class="md-ink-ripple" md-whiteframe="1">
     <div class="post-header" layout="row" flex>
-        <img class="thumbnail-small" alternative-user-image ui-sref="userposts({username: vm.post.user.username})"
-             ng-src="{{vm.post.user.pictureUri}}" alt="profile">
+        <img class="thumbnail-small" alternative-user-image ui-sref="userposts({username: vm.post.user.username})" ng-src="{{vm.post.user.pictureUri}}"
+            alt="profile">
         <div class="md-padding left" layout="row" layout-align="space-between center" flex>
             <a class="md-body-2" ui-sref="userposts({username: vm.post.user.username})">{{vm.post.user.username}}</a>
             <md-menu md-position-mode="target-right target">
@@ -27,18 +27,25 @@
     </div>
     <div class="post-content" md-ink-ripple>
         <div class="post-content-buttons" layout="row" layout-align="space-between center" ng-if="vm.post.attachments.length > 1">
-            <md-button class="md-icon-button" ng-click="vm.previous()">
-                <md-icon>chevron_left</md-icon>
-            </md-button>
-            <md-button class="md-icon-button" ng-click="vm.next()">
-                <md-icon>chevron_right</md-icon>
-            </md-button>
+            <div>
+                <md-button class="md-icon-button" ng-click="vm.previous()" ng-if="vm.post.activeAttachment > 0">
+                    <md-icon>chevron_left</md-icon>
+                </md-button>
+            </div>
+            <div>
+                <md-button class="md-icon-button" ng-click="vm.next()" ng-if="vm.post.activeAttachment != vm.post.attachments.length - 1">
+                    <md-icon>chevron_right</md-icon>
+                </md-button>
+            </div>
         </div>
         <img class="post-image" ng-src="{{vm.post.attachments[vm.post.activeAttachment].uri}}" alt="post-image">
     </div>
     <div class="post-details">
-        <div>
+        <div layout="row" layout-align="space-between center">
             <span class="md-subhead"><strong>{{vm.post.likesCount}} likes</strong></span>
+            <div layout="row" ng-if="vm.post.attachments.length > 1">
+                <md-icon class="post-badge" ng-repeat="attachment in vm.post.attachments" ng-class="{ 'active' : vm.post.activeAttachment === $index }">lens</md-icon>
+            </div>
         </div>
         <a class="md-body-2 post-link" ui-sref="userposts({username: vm.post.user.username})"><strong>{{vm.post.user.username}}</strong></a>
         <span>{{vm.post.caption}}</span>
