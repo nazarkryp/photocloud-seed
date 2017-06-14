@@ -10,7 +10,7 @@
         this.create = function (account) {
             var deferred = $q.defer();
 
-            httpService.post('account/create', account, deferred);
+            httpService.post('account', account, deferred);
 
             return deferred.promise;
         };
@@ -31,5 +31,13 @@
 
             return deferred.promise;
         };
+
+        this.updateAccount = function (properties) {
+            var deferred = $q.defer();
+
+            httpService.patch('account', properties, deferred);
+
+            return deferred.promise;
+        }
     }
 })();

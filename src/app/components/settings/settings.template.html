@@ -1,8 +1,12 @@
 <div class="content" layout="row" layout-align="center start">
     <div class="page-content" layout="row">
         <div class="md-padding" layout="row" layout-align="center start">
-            <img src="https://res.cloudinary.com/dpfmyl1mn/image/upload/v1497006534/photocloud/prod/lanafeshchuk/b07ws8mbe1afspjtdtrd.jpg"
-                 style="border-radius: 90px; width: 190px; height: 190px; object-fit: cover;">
+            <img
+                ng-src="{{vm.account.pictureUri}}"
+                ngf-select="vm.updateProfilePicture($file)"
+                ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB"
+                alternative-user-image
+                style="border-radius: 90px; width: 190px; height: 190px; object-fit: cover;">
         </div>
         <div class="md-padding md-block" layout="column" layout-align="start start">
             <div>
@@ -12,16 +16,16 @@
                 <div layout="row">
                     <md-input-container class="md-block">
                         <label for="username">Username</label>
-                        <input name="username" type="text"/>
+                        <input name="username" type="text" ng-model="vm.account.username"/>
                     </md-input-container>
                     <md-input-container class="md-block">
                         <label for="fullName">Full Name</label>
-                        <input name="fullName" type="text"/>
+                        <input name="fullName" type="text" ng-model="vm.account.fullName"/>
                     </md-input-container>
                 </div>
                 <md-input-container class="md-block">
                     <label for="bio">Bio</label>
-                    <input name="bio" type="text"/>
+                    <input name="bio" type="text" ng-model="vm.account.bio"/>
                 </md-input-container>
                 <div layout="row" layout-align="end center">
                     <md-button class="md-primary">Save Changes</md-button>
@@ -32,8 +36,8 @@
                     <span class="md-headline">Private Information</span>
                 </div>
                 <md-input-container class="md-block">
-                    <label for="username">Email Address</label>
-                    <input name="username" type="text"/>
+                    <label for="email">Email Address</label>
+                    <input name="email" type="text" ng-model="vm.account.email"/>
                 </md-input-container>
                 <div layout="row" layout-align="end center">
                     <md-button class="md-primary">Save Changes</md-button>
@@ -66,14 +70,18 @@
                 </div>
                 <div class="md-padding top">
                     <label class="md-subhead bold">Privacy</label>
-                    <md-switch ng-change="vm.changePrivacy()" ng-model="vm.account.isPrivate" aria-label="Is Private"
+                    <md-switch ng-change="vm.setAccountPrivacy()" ng-model="vm.account.isPrivate"
+                               aria-label="Is Private"
                                ng-disabled="!vm.account.isActive">
                     </md-switch>
-                    <p class="description">When your account is private, only people you approve can see you photos and videos on PhotoCloud. The
+                    <p class="description">When your account is private, only people you approve can see you photos and
+                        videos on PhotoCloud. The
                         existing followers won't be affected</p>
                 </div>
                 <div layout="row" layout-align="center center">
-                    <md-button class="md-raised md-warn" ng-click="vm.invertAccountStatus()">{{vm.account.isActive ? 'Deactivate' : 'Activate'}} Account</md-button>
+                    <md-button class="md-raised md-warn" ng-click="vm.invertAccountStatus()">{{vm.account.isActive ?
+                        'Deactivate' : 'Activate'}} Account
+                    </md-button>
                 </div>
             </div>
         </div>

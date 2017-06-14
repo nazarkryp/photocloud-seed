@@ -46,6 +46,19 @@
             }
         };
 
+        this.patch = function (url, data, deferred) {
+            $http.patch(environment.requestUri + url, data)
+                .then(onSuccess, onError);
+
+            function onSuccess(response) {
+                deferred.resolve(response.data);
+            }
+
+            function onError(error) {
+                deferred.reject(error);
+            }
+        };
+
         this.delete = function (url, deferred) {
             $http.delete(environment.requestUri + url)
                 .then(onSuccess, onError);
