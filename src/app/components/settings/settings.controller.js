@@ -4,9 +4,9 @@
     angular.module('photocloud')
         .controller('SettingsController', SettingsController);
 
-    SettingsController.$inject = ['Upload', 'accountService', 'environment'];
+    SettingsController.$inject = ['Upload', 'accountService', 'userProvider', 'environment'];
 
-    function SettingsController($upload, accountService, environment) {
+    function SettingsController($upload, accountService, userProvider, environment) {
         var vm = this;
 
         vm.account = {};
@@ -22,18 +22,31 @@
                 });
         }
 
+        function updateCurrentUser(user) {
+
+        }
+
         vm.changePassword = function () {
+            var account = {
+                oldPassword: vm.account.oldPassword,
+                newPassword: vm.account.newPassword
+            };
+
+            accountService.updateAccount(account)
+                .then(function (response) {}, function (error) {});
         };
 
         vm.updateProfilePicture = function (attachment) {
             vm.isUploading = true;
 
-            $upload.upload({
+            var upload = {
                 url: environment.requestUri + 'attachments',
                 data: {
                     file: attachment
                 }
-            })
+            };
+
+            $upload.upload(upload)
                 .progress(function (e) {
                     vm.progress = Math.round((e.loaded * 100.0) / e.total);
                 })
@@ -62,12 +75,43 @@
                 });
         };
 
+        vm.updateProfile = function () {
+            var account = {
+                username: vm.account.username,
+                fullName: vm.account.fullName,
+                bio: vm.account.bio,
+                email: vm.account.email
+            };
+
+            accountService.updateAccount(account)
+                .then(function (response) {
+                    vm.account.username = response.username;
+                    vm.account.fullName = response.fullName;
+                    vm.account.bio = response.bio;
+                    vm.account.email = response.email;
+                });
+        };
+
+        vm.changeAccountPrivacy = function () {
+            var account = {
+                isPrivate: vm.account.isPrivate
+            };
+
+            accountService.updateAccount(account)
+                .then(function (response) {
+                    vm.account.isPrivate = response.isPrivate;
+                });
+        };
+
         vm.invertAccountStatus = function () {
-            vm.account.isActive = !vm.account.isActive;
-            // accountService.invertAccountStatus()
-            //     .then(function (response) {
-            //
-            //     });
+            var account = {
+                isActive: !vm.account.isActive
+            };
+
+            accountService.updateAccount(account)
+                .then(function (response) {
+                    vm.account.isActive = response.isActive;
+                });
         };
 
         vm.$onInit = function () {

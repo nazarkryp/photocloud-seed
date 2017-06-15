@@ -11,7 +11,7 @@
         <div class="md-padding md-block" layout="column" layout-align="start start">
             <div>
                 <div>
-                    <span class="md-headline">General Information</span>
+                    <span class="md-subhead">General Information</span>
                 </div>
                 <div layout="row">
                     <md-input-container class="md-block">
@@ -27,13 +27,10 @@
                     <label for="bio">Bio</label>
                     <input name="bio" type="text" ng-model="vm.account.bio"/>
                 </md-input-container>
-                <div layout="row" layout-align="end center">
-                    <md-button class="md-primary">Save Changes</md-button>
-                </div>
             </div>
             <div>
                 <div>
-                    <span class="md-headline">Private Information</span>
+                    <span class="md-subhead">Private Information</span>
                 </div>
                 <md-input-container class="md-block">
                     <label for="email">Email Address</label>
@@ -45,7 +42,7 @@
             </div>
             <div>
                 <div>
-                    <span class="md-headline">Change Password</span>
+                    <span class="md-subhead">Change Password</span>
                 </div>
                 <md-input-container class="md-block">
                     <label for="oldPassword">Old Password</label>
@@ -70,7 +67,7 @@
                 </div>
                 <div class="md-padding top">
                     <label class="md-subhead bold">Privacy</label>
-                    <md-switch ng-change="vm.setAccountPrivacy()" ng-model="vm.account.isPrivate"
+                    <md-switch ng-change="vm.changeAccountPrivacy()" ng-model="vm.account.isPrivate"
                                aria-label="Is Private"
                                ng-disabled="!vm.account.isActive">
                     </md-switch>
