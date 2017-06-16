@@ -7,7 +7,29 @@
     userProvider.$inject = ['sessionStorage'];
 
     function userProvider(sessionStorage) {
-        this.setCurrentUser = function (session) {
+        var self = this;
+
+        self.updateCurrentUser = function (properties) {
+            var session = sessionStorage.get();
+
+            for (var property in properties) {
+                session[property] = properties[property];
+                self.currentUser[property] = properties[property];
+            }
+
+            sessionStorage.save(session);
+        };
+
+        self.update = function (key, value) {
+            var session = sessionStorage.get();
+
+            session[key] = value;
+            self.currentUser[key] = value;
+
+            sessionStorage.save(session);
+        };
+
+        self.setCurrentUser = function (session) {
             session.userId = parseInt(session.userId, 10);
             session.isActive = session.isActive === 'true';
             session.isPrivate = session.isPrivate === 'true';
@@ -15,16 +37,16 @@
 
             sessionStorage.save(session);
 
-            this.currentUser = getUserFromSession();
+            self.currentUser = getUserFromSession();
         };
 
-        this.logout = function () {
+        self.logout = function () {
             sessionStorage.clean();
 
-            this.currentUser = getUserFromSession();
+            self.currentUser = getUserFromSession();
         };
 
-        this.currentUser = getUserFromSession();
+        self.currentUser = getUserFromSession();
 
         function getUserFromSession() {
             var user = sessionStorage.get();

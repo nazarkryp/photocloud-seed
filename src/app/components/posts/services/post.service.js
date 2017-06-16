@@ -40,7 +40,7 @@
         this.getUserPosts = function (username, pageFilter) {
             var deferred = $q.defer();
 
-            var requestUri = 'posts/users/' + username;
+            var requestUri = 'posts/' + username;
 
             if (pageFilter && pageFilter.next) {
                 requestUri = requestUri + '?next=' + pageFilter.next;

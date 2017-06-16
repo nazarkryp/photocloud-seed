@@ -38,6 +38,14 @@
             httpService.patch('account', properties, deferred);
 
             return deferred.promise;
-        }
+        };
+
+        this.changePassword = function (password) {
+            var deferred = $q.defer();
+
+            httpService.put('account', password, deferred);
+
+            return deferred.promise;
+        };
     }
 })();
