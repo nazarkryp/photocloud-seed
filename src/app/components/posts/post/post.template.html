@@ -28,13 +28,13 @@
     <div class="post-content" md-ink-ripple>
         <div class="post-content-buttons" layout="row" layout-align="space-between center" ng-if="vm.post.attachments.length > 1">
             <div>
-                <md-button class="md-icon-button" ng-click="vm.previous()" ng-if="vm.post.activeAttachment > 0">
-                    <md-icon>chevron_left</md-icon>
+                <md-button class="md-icon-button md-raised" ng-click="vm.previous()" ng-if="vm.post.activeAttachment > 0">
+                    <md-icon class="post-icon">chevron_left</md-icon>
                 </md-button>
             </div>
             <div>
-                <md-button class="md-icon-button" ng-click="vm.next()" ng-if="vm.post.activeAttachment != vm.post.attachments.length - 1">
-                    <md-icon>chevron_right</md-icon>
+                <md-button class="md-icon-button md-raised" ng-click="vm.next()" ng-if="vm.post.activeAttachment != vm.post.attachments.length - 1">
+                    <md-icon class="post-icon">chevron_right</md-icon>
                 </md-button>
             </div>
         </div>
@@ -64,7 +64,7 @@
         <md-divider class="md-block"></md-divider>
     </div>
     <div class="post-footer">
-        <md-button class="md-icon-button">
+        <md-button class="md-icon-button" ng-click="vm.like()">
             <md-icon ng-class="{ 'danger' : vm.post.userHasLiked }">favorite_border</md-icon>
         </md-button>
         <md-input-container class="light-container md-no-spacer" md-no-float>

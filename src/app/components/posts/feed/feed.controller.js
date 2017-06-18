@@ -39,8 +39,7 @@
             vm.data.posts.unshift(post);
         }
 
-        function onPostCreateError() {
-        }
+        function onPostCreateError() {}
 
         vm.removePost = function (index) {
             var post = vm.data.posts[index];
@@ -49,8 +48,8 @@
                 vm.data.posts.splice(index, 1);
 
                 postService.remove(post.id).then(
-                    function (response) {
-                    });
+                    function (response) {},
+                    function (error) {});
             }
         };
 
@@ -66,13 +65,16 @@
                     vm.data.pagination = response.pagination;
                     vm.data.hasMoreItems = response.hasMoreItems;
                     vm.isLoading = false;
+                    vm.isPageLoading = false;
                 }, function (error) {
+                    vm.isPageLoading = false;
                     vm.isLoading = false;
                 });
         };
 
         vm.$onInit = function () {
             vm.getPosts();
+            vm.isPageLoading = true;
         };
     }
 })(angular);

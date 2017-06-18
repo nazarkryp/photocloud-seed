@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
-
 html {
     overflow-y: scroll;
 }
@@ -26,6 +25,10 @@ md-toolbar:not(.md-menu-toolbar) {
 md-toolbar.md-default-theme:not(.md-menu-toolbar) md-icon,
 md-toolbar:not(.md-menu-toolbar) md-icon {
     color: #444444;
+}
+
+.md-icon-button.md-raised {
+    background-color: rgba(250, 250, 250, 0.5);
 }
 
 md-progress-linear {
@@ -133,14 +136,11 @@ h2 {
     padding: 35px;
 }
 
-.box-header {
-}
+.box-header {}
 
-.box-content {
-}
+.box-content {}
 
-.box-footer {
-}
+.box-footer {}
 
 a {
     text-decoration: none;
@@ -149,6 +149,7 @@ a {
 a.md-primary {
     cursor: pointer;
 }
+
 
 /*a:visited {
     color: rgb(33, 150, 243);
@@ -336,6 +337,7 @@ a.md-body-2 {
     color: #444444;
 }
 
+
 /*md-autocomplete-wrap {
     border: 1px solid #efefef;
     border-radius: 2px;
@@ -391,7 +393,7 @@ md-icon.big {
 
 md-list-item.md-no-proxy,
 md-list-item .md-no-style,
-md-list-item._md-button-wrap > div.md-button:first-child > .md-button:first-child {
+md-list-item._md-button-wrap>div.md-button:first-child>.md-button:first-child {
     margin: 0px 50px 0px 5px;
 }
 
@@ -476,8 +478,8 @@ md-dialog md-dialog-actions .md-button {
 
 .image-container .after {
     position: absolute;
-    width: 300px;
-    height: 300px;
+    width: 100%;
+    height: 100%;
     color: #ffffff;
     opacity: 0;
     border-style: none;
@@ -495,7 +497,6 @@ md-dialog md-dialog-actions .md-button {
 
 .post-icon {
     color: white;
-    padding-right: 5px !important;
 }
 
 .post-number {

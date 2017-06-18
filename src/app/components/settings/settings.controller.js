@@ -31,6 +31,8 @@
                 }
             };
 
+            vm.isUploading = true;
+
             $upload.upload(upload)
                 .progress(function (e) {
                     vm.progress = Math.round((e.loaded * 100.0) / e.total);
@@ -46,11 +48,13 @@
                             vm.account.pictureUri = data.uri;
                             userProvider.update('pictureId', data.id);
                             userProvider.update('pictureUri', data.uri);
+                            vm.isUploading = false;
                         }, function (error) {
-                            console.log(error);
+                            vm.isUploading = false;
                         });
                 })
                 .error(function (error, status, headers, config) {
+                    vm.isUploading = false;
                     logger.toast(error);
                 });
         };
@@ -71,8 +75,7 @@
                     vm.account.email = response.email;
 
                     userProvider.updateCurrentUser(response);
-                }, function (error) {
-                });
+                }, function (error) {});
         };
 
         vm.changeAccountPrivacy = function () {
@@ -84,8 +87,7 @@
                 .then(function (response) {
                     vm.account.isPrivate = response.isPrivate;
                     userProvider.update('isPrivate', response.isPrivate);
-                }, function (error) {
-                });
+                }, function (error) {});
         };
 
         vm.invertAccountStatus = function () {
@@ -98,16 +100,14 @@
                     vm.account.isActive = response.isActive;
                     userProvider.update('isActive', response.isActive);
                     logger.toast('Account ' + (response.isActive ? 'activated' : 'deactivated'));
-                }, function (error) {
-                });
+                }, function (error) {});
         };
 
         vm.$onInit = function () {
             accountService.getAccount()
                 .then(function (response) {
                     vm.account = response;
-                }, function (error) {
-                });
+                }, function (error) {});
         };
     }
 })(angular);

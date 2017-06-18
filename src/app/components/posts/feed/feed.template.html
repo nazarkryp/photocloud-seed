@@ -1,7 +1,10 @@
-<div class="content" layout="column" layout-align="start center">
-    <post class="post" remove-callback="vm.removePost($index)" ng-repeat="post in vm.data.posts" post="post"></post>
+<div class="content" layout="column" layout-align="center center" ng-if="vm.isPageLoading">
+    <md-progress-circular md-mode="indeterminate" md-diameter="40"></md-progress-circular>
+</div>
+<div class="content" layout="column" layout-align="start center" ng-if="!vm.isPageLoading">
+    <post class="post" remove-callback="vm.removePost($index)" ng-repeat="post in vm.data.posts" post="post" ng-if="!vm.isPageLoading"></post>
     <div class="md-padding" ng-if="vm.data.hasMoreItems">
-        <md-button class="md-fab" ng-click="vm.getPosts()" ng-if="!vm.isLoading">
+        <md-button class="md-fab" ng-click="vm.getPosts()">
             <md-tooltip md-direction="left">Load more posts</md-tooltip>
             <md-icon>expand_more</md-icon>
         </md-button>

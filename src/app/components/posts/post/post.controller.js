@@ -4,9 +4,9 @@
     angular.module('photocloud')
         .controller('PostController', PostController);
 
-    PostController.$inject = ['$state', '$stateParams', 'userProvider', 'clipboard', 'logger'];
+    PostController.$inject = ['$state', '$stateParams', 'userProvider', 'postService', 'commentService', 'clipboard', 'logger'];
 
-    function PostController($state, $stateParams, userProvider, clipboard, logger) {
+    function PostController($state, $stateParams, userProvider, postService, commentService, clipboard, logger) {
         var vm = this;
 
         vm.next = function () {
@@ -35,6 +35,30 @@
             clipboard.setText(link);
 
             logger.toast('Copied to clipboard');
+        };
+
+        vm.like = function () {
+            if (vm.post.userHasLiked) {
+                vm.post.likesCount--;
+                vm.post.userHasLiked = !vm.post.userHasLiked;
+            } else {
+                vm.post.likesCount++;
+                vm.post.userHasLiked = !vm.post.userHasLiked;
+            }
+
+            // postService.likePost(postId)
+            //     .then(function (response) {
+
+            //     }, function (error) {});
+        };
+
+        vm.getComments = function () {
+            commentService.getComments(vm.postId)
+                .then(function (response) {
+                    vm.post.comments = response;
+                }, function (error) {
+                    logger.toast('Error during loading comments');
+                });
         };
 
         vm.$onInit = function () {
