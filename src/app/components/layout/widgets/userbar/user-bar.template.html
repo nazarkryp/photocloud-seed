@@ -3,6 +3,6 @@
     <md-button class="md-primary md-raised" ui-sref="signin">Sign In</md-button>
 </div>
 <div layout="row" layout-align="center center" ng-if="vm.currentUser.isAuthenticated">
-    <img class="thumbnail-small" alternative-user-image ui-sref="userposts({username: vm.currentUser.username})" ng-src="{{vm.currentUser.pictureUri}}" alt="user">
-    <md-button ng-click="vm.logout()">Logout</md-button>
+    <img class="thumbnail-small" alternative-user-image ui-sref="userposts({username: vm.currentUser.username})" ng-src="{{vm.currentUser.pictureUri}}"
+        alt="user">
 </div>

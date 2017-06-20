@@ -33,7 +33,7 @@
                 }, function () {
                     vm.isLoading = false;
                 });
-        }
+        };
 
         function getUser(username) {
             return userService.getUser(username)
@@ -68,6 +68,11 @@
                     }
                 });
         }
+
+        vm.logout = function () {
+            userProvider.logout();
+            $state.go('signin');
+        };
 
         vm.$onInit = function () {
             vm.currentUser = userProvider.currentUser;

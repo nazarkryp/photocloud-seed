@@ -256,12 +256,21 @@ a.md-primary {
     height: auto;
 }
 
-.post-content-buttons {
+.post-content .post-content-buttons {
     position: absolute;
+    opacity: 0;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
+}
+
+.post-content .post-content-buttons.fixed {
+    position: fixed;
+}
+
+.post-content:not([disabled]):hover .post-content-buttons {
+    opacity: 1;
 }
 
 .post-image {

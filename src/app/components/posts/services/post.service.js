@@ -54,7 +54,7 @@
         this.createPost = function (post) {
             var deferred = $q.defer();
 
-            httpService.post('posts/create', post, deferred);
+            httpService.post('posts', post, deferred);
 
             return deferred.promise;
         };
@@ -70,7 +70,15 @@
         this.likePost = function (postId) {
             var deferred = $q.defer();
 
-            httpService.delete('posts/like/' + postId, deferred);
+            httpService.postEmpty('posts/' + postId + '/likes', deferred);
+
+            return deferred.promise;
+        };
+
+        this.dislikePost = function (postId) {
+            var deferred = $q.defer();
+
+            httpService.delete('posts/' + postId + '/likes', deferred);
 
             return deferred.promise;
         };

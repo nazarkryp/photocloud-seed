@@ -23,12 +23,14 @@
         vm.upload = function (attachment) {
             vm.isUploading = true;
 
-            $upload.upload({
+            var upload = {
                 url: environment.requestUri + 'attachments',
                 data: {
                     file: attachment
                 }
-            })
+            };
+
+            $upload.upload(upload)
                 .progress(function (e) {
                     vm.upload.progress = Math.round((e.loaded * 100.0) / e.total);
                 })
@@ -54,11 +56,6 @@
                 .then(function (response) {
                     $mdDialog.hide(response);
                 });
-        };
-
-        vm.$onInit = function () {
-            console.log('create post attachments');
-            console.log(vm.post.attachments);
         };
     }
 })(angular);

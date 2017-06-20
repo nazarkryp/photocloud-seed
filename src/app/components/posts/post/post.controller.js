@@ -41,15 +41,22 @@
             if (vm.post.userHasLiked) {
                 vm.post.likesCount--;
                 vm.post.userHasLiked = !vm.post.userHasLiked;
+
+                postService.dislikePost(vm.post.id)
+                    .then(function () {}, function () {
+                        vm.post.userHasLiked = !vm.post.userHasLiked;
+                        vm.post.likesCount++;
+                    });
             } else {
                 vm.post.likesCount++;
                 vm.post.userHasLiked = !vm.post.userHasLiked;
+
+                postService.likePost(vm.post.id)
+                    .then(function () {}, function () {
+                        vm.post.userHasLiked = !vm.post.userHasLiked;
+                        vm.post.likesCount--;
+                    });
             }
-
-            // postService.likePost(postId)
-            //     .then(function (response) {
-
-            //     }, function (error) {});
         };
 
         vm.getComments = function () {

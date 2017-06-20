@@ -1,9 +1,17 @@
-<div class="content" layout="column" layout-align="center center">
-    <div class="md-padding" ng-if="vm.post.attachments.length > 0">
-        <img ng-src="{{vm.post.attachments[0].uri}}" alt="attachment">
-    </div>
-    <div class="md-padding" ng-if="vm.error">
-        <h1>Sorry, this page isn't available.</h1>
-        <span>The link you followed may be broken, or the page may have been removed. Go back to <a ui-sref="posts">PhotoCloud</a>.</span>
+<div class="content" layout="row" layout-align="center start">
+    <div class="post-content" layout="row" layout-align="center start" ng-if="vm.post.attachments.length > 0">
+        <div class="post-content-buttons fixed" layout="row" layout-align="space-between center" ng-if="vm.post.attachments.length > 1">
+            <div>
+                <md-button class="md-icon-button md-raised" ng-click="vm.previous()" ng-if="vm.post.activeAttachment > 0">
+                    <md-icon class="post-icon">chevron_left</md-icon>
+                </md-button>
+            </div>
+            <div>
+                <md-button class="md-icon-button md-raised" ng-click="vm.next()" ng-if="vm.post.activeAttachment != vm.post.attachments.length - 1">
+                    <md-icon class="post-icon">chevron_right</md-icon>
+                </md-button>
+            </div>
+        </div>
+        <img ng-src="{{vm.post.attachments[vm.post.activeAttachment].uri}}" alt="attachment">
     </div>
 </div>

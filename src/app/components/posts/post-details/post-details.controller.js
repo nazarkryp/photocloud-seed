@@ -11,22 +11,39 @@
 
         vm.post = {};
 
-        function getPost(id) {
-            postService.getPostById(id)
-                .then(onSuccess, onError);
-        }
+        vm.next = function () {
+            var count = vm.post.attachments.length;
+
+            if (count > 1 && vm.post.activeAttachment !== count - 1) {
+                vm.post.activeAttachment++;
+            }
+        };
+
+        vm.previous = function () {
+            var count = vm.post.attachments.length;
+
+            if (count > 1 && vm.post.activeAttachment !== 0) {
+                vm.post.activeAttachment--;
+            }
+        };
 
         function onSuccess(response) {
             vm.post = response;
+
+            if (vm.post && vm.post.attachments.length > 0) {
+                vm.post.activeAttachment = 0;
+            }
         }
 
         function onError(error) {
-            vm.error = error;
+            if (error.status === 404) {
+                $state.go('404');
+            }
         }
 
         vm.$onInit = function () {
-            console.log($stateParams.postId);
-            getPost($stateParams.postId);
+            postService.getPostById($stateParams.postId)
+                .then(onSuccess, onError);
         };
     }
 })(angular);

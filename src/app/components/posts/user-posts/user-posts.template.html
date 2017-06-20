@@ -1,11 +1,16 @@
 <div class="content" layout="column" layout-align="start center">
     <div class="user-info" layout="row" layout-align="center start" ng-if="vm.loaded">
-        <img class="thumbnail-big" alternative-user-image ng-src="{{vm.user.pictureUri}}" alt="profile" md-whiteframe="3"/>
+        <img class="thumbnail-big" alternative-user-image ng-src="{{vm.user.pictureUri}}" alt="profile" md-whiteframe="3" />
         <div class="md-padding" layout="column" layout-align="stretch stretch" flex>
             <div layout="row" layout-align="space-between center">
                 <span class="md-display-1">{{vm.user.username}}</span>
                 <a ui-sref="settings" ng-if="vm.currentUser.userId === vm.user.id">
+                    <md-tooltip md-direction="left">Go to settings</md-tooltip>
                     <md-icon>settings</md-icon>
+                </a>
+                <a ng-if="vm.currentUser.userId === vm.user.id" ng-click="vm.logout()">
+                    <md-tooltip md-direction="left">Logout</md-tooltip>
+                    <md-icon>exit_to_app</md-icon>
                 </a>
             </div>
             <div class="md-padding top counters" layout="row" layout-align="start center" ng-if="vm.user.isActive">
