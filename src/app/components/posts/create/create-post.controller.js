@@ -38,6 +38,7 @@
                     vm.isUploading = false;
 
                     vm.post.attachments.push(data);
+
                     if (vm.post.attachments.length === 1) {
                         vm.post.preview = data.uri;
                     }
