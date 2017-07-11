@@ -1,0 +1,51 @@
+<!doctype html>
+<html ng-app="photocloud">
+
+<head>
+    <meta charset="utf-8">
+    <title ng-bind="title">PhotoCloud</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles/vendor-c9d37438f3.css">
+
+    <link rel="stylesheet" href="styles/app-be01adb5e0.css">
+</head>
+
+<body ng-controller="IndexController as vm" ng-cloak>
+    <header>
+        <md-toolbar md-whiteframe="1">
+            <div class="md-toolbar-tools" layout="row" layout-align="center center">
+                <div class="container" layout="row" layout-align="space-between center">
+                    <div class="col-x1">
+                        <a class="title" ui-sref="posts">photocloud</a>
+                    </div>
+                    <div class="col-x2" layout="row" layout-align="center center">
+                        <!--<search-bar class="search-bar" flex ng-if="vm.currentUser.isAuthenticated"></search-bar>-->
+                    </div>
+                    <div class="col-x1">
+                        <user-bar></user-bar>
+                    </div>
+                </div>
+            </div>
+        </md-toolbar>
+    </header>
+    <div id="toast-container"></div>
+    <main>
+        <div ui-view></div>
+    </main>
+    <footer>
+        <div class="footer" layout="row" layout-align="center center">
+            <span>Copyright &copy; {{ vm.date | date : 'yyyy' }} PhotoCloud</span>
+        </div>
+    </footer>
+
+    <script src="scripts/vendor-61e27992ef.js"></script>
+
+    <script src="scripts/app-e55a6f1ac3.js"></script>
+
+</body>
+
+</html>
