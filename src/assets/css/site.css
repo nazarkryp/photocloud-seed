@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
+
 html {
     overflow-y: scroll;
 }
 
 body {
     font-family: 'Roboto', sans-serif;
-    font-weight: lighter;
+    font-weight: 300;
     color: #444444;
 }
 
@@ -74,7 +75,7 @@ md-progress-circular.md-black path {
 .md-toolbar-tools h1,
 .md-toolbar-tools h2,
 .md-toolbar-tools h3 {
-    font-weight: lighter;
+    font-weight: 300;
 }
 
 .md-block {
@@ -84,21 +85,21 @@ md-progress-circular.md-black path {
 }
 
 h1 {
-    font-weight: lighter;
+    font-weight: 300;
 }
 
 h2 {
-    font-weight: lighter;
+    font-weight: 300;
 }
 
 .title {
-    font-weight: lighter;
+    font-weight: 300;
     font-size: 24px;
 }
 
 .md-display-1,
 .md-headline {
-    font-weight: lighter;
+    font-weight: 300;
 }
 
 .content {
@@ -136,11 +137,14 @@ h2 {
     padding: 35px;
 }
 
-.box-header {}
+.box-header {
+}
 
-.box-content {}
+.box-content {
+}
 
-.box-footer {}
+.box-footer {
+}
 
 a {
     text-decoration: none;
@@ -149,7 +153,6 @@ a {
 a.md-primary {
     cursor: pointer;
 }
-
 
 /*a:visited {
     color: rgb(33, 150, 243);
@@ -346,7 +349,6 @@ a.md-body-2 {
     color: #444444;
 }
 
-
 /*md-autocomplete-wrap {
     border: 1px solid #efefef;
     border-radius: 2px;
@@ -402,7 +404,7 @@ md-icon.big {
 
 md-list-item.md-no-proxy,
 md-list-item .md-no-style,
-md-list-item._md-button-wrap>div.md-button:first-child>.md-button:first-child {
+md-list-item._md-button-wrap > div.md-button:first-child > .md-button:first-child {
     margin: 0px 50px 0px 5px;
 }
 

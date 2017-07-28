@@ -4,9 +4,9 @@
     angular.module('photocloud')
         .service('accountService', accountService);
 
-    accountService.$inject = ['$q', 'httpService'];
+    accountService.$inject = ['$q', '$http', 'httpService', 'environment'];
 
-    function accountService($q, httpService) {
+    function accountService($q, $http, httpService, environment) {
         this.create = function (account) {
             var deferred = $q.defer();
 
@@ -27,7 +27,12 @@
             var deferred = $q.defer();
 
             var data = 'grant_type=password&username=' + account.username + '&password=' + account.password;
-            httpService.post('authorize', data, deferred);
+            $http.post(environment.authorizeUri, data)
+                .then(function (response) {
+                    deferred.resolve(response.data);
+                }, function (error) {
+                    deferred.reject(error);
+                });
 
             return deferred.promise;
         };
